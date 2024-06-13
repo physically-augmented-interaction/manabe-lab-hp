@@ -1,0 +1,83 @@
+---
+import { css } from "../../../styled-system/css";
+const slideImages = [
+  "/blog-placeholder-1.jpg",
+  "/blog-placeholder-2.jpg",
+  "/blog-placeholder-3.jpg",
+  "/blog-placeholder-4.jpg",
+];
+---
+
+<div class={css({ height: "100%" })}>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {
+        slideImages.map((slide) => (
+          <div class="swiper-slide">
+            <img src={slide} alt="slide" />
+          </div>
+        ))
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button swiper-button-prev"></div>
+    <div class="swiper-button swiper-button-next"></div>
+  </div>
+</div>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .swiper-wrapper {
+    width: 50vw;
+  }
+
+  .swiper-slide {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-button::after {
+    font-size: 32px;
+    color: #fff;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css/bundle";
+
+  export const swiperConfig = {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    speed: 800,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    // autoplay: {
+    //   delay: 3000,
+    // },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  };
+
+  const swiper = new Swiper(".swiper", swiperConfig);
+</script>

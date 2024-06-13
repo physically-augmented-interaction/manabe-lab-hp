@@ -1,0 +1,41 @@
+---
+import Header from "../../components/Header.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Layout from "../../layouts/Layout.astro";
+import "../../index.css";
+
+const posts = (await getCollection("reports")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+);
+---
+
+<Layout title="Blog" path="/reports">
+  <body>
+    <Header />
+    <main>
+      <section>
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <a href={`/reports/${post.slug}/`}>
+                  <img
+                    width={720}
+                    height={360}
+                    src={post.data.heroImage}
+                    alt=""
+                  />
+                  <h4 class="title">{post.data.title}</h4>
+                  <p class="date">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+  </body>
+</Layout>

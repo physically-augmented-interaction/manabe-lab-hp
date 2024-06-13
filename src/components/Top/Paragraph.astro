@@ -1,0 +1,15 @@
+---
+import { css } from "../../../styled-system/css";
+import "@fontsource-variable/noto-sans-jp";
+---
+
+<p
+  class={css({
+    fontFamily: "Noto Sans JP",
+    my: ".5rem",
+    wordBreak: "auto-phrase",
+    color: "{colors.neutral.400}",
+  })}
+>
+  <slot />
+</p>

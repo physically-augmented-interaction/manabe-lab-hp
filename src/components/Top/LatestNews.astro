@@ -1,0 +1,29 @@
+---
+import { css } from "../../../styled-system/css";
+import NewsTopics from "./NewsTopics.astro";
+import Paragraph from "./Paragraph.astro";
+---
+
+<div
+  class={css({
+    backgroundColor: "#fff",
+    width: "100%",
+    height: "20%",
+  })}
+>
+  <h2
+    class={css({
+      fontFamily: "Montserrat Variable",
+      textAlign: "center",
+      fontWeight: "bold",
+      fontSize: "2.5rem",
+      padding: "2rem",
+      color: "#404040",
+    })}
+  >
+    更新情報
+  </h2>
+  <div>
+    <NewsTopics />
+  </div>
+</div>

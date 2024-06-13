@@ -1,0 +1,78 @@
+---
+import { css } from "../../../styled-system/css";
+import Paragraph from "./Paragraph.astro";
+---
+
+<div
+  class={css({
+    backgroundColor: "#272727",
+    width: "100%",
+    height: "20%",
+    color: "{colors.neutral.50}",
+  })}
+>
+  <h2
+    class={css({
+      fontFamily: "Montserrat Variable",
+      textAlign: "center",
+      fontWeight: "bold",
+      fontSize: "2.5rem",
+      padding: "2rem",
+    })}
+  >
+    ABOUT US
+  </h2>
+  <div
+    class={css({
+      display: "grid",
+      gridTemplateColumns: "1fr",
+      gap: "2rem",
+      padding: "0 2rem",
+      lg: {
+        gridTemplateColumns: "1fr 1fr",
+      },
+      xl: {
+        gridTemplateColumns: "600px 1fr",
+      },
+    })}
+  >
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      })}
+    >
+      <img
+        src="/top/about_us.webp"
+        alt="about us"
+        class={css({ width: "100%", maxWidth: "600px" })}
+      />
+    </div>
+    <div
+      class={css({
+        display: "flex",
+        flexDirection: "column",
+        gap: ".5rem",
+        pb: "4rem",
+      })}
+    >
+      <Paragraph>
+        PCやスマートフォンは，我々の生活になくてはならない存在です．
+        小さくても高機能，高性能なコンピュータが，我々の生活を便利で豊かなものとしてきました．
+        昨今のIoTやAIのブームに代表されるように，コンピュータの活用範囲が急速に拡大しています．
+        これまで以上に我々は，常にコンピュータに囲まれながら生活をし，その恩恵を受けていくことになるでしょう．
+      </Paragraph>
+      <Paragraph>
+        コンピュータとしてみれば，スマートフォンはPCを小型化したものと考えることができます．しかし，単にPCを小さくしても，使いづらい小型PCにしかなりません．
+        タッチディスプレイやマルチタッチ，フリック入力などの技術があって，初めてスマートフォンを便利に使うことができます．
+        さらに小さなコンピュータが作られるようになった時，我々はどのようしてコンピュータとやり取りをするのでしょうか．小さなコンピュータが身の回りに無数にあった場合，何ができるようになるのでしょうか．
+      </Paragraph>
+      <Paragraph>
+        我々は，未来のコンピュータとユーザのやり取り，情報とユーザの関係について考えていきます．
+        例えば，コンピュータに対してユーザはどのように入力を行うのか，ユーザに対してコンピュータはどのように出力を行うのか，そしてそれらをどのような場面でどのように組み合わせれば良いのか，などについてです．
+        そして，モノづくりを通して，それらのアイデアを具現化し実証していきます．
+      </Paragraph>
+    </div>
+  </div>
+</div>

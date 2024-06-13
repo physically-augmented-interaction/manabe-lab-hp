@@ -2,19 +2,24 @@
 import NarrowHeader from "../components/NarrowHeader.astro";
 import WideHeader from "../components/WideHeader.astro";
 import { css } from "../../styled-system/css";
+import "@fontsource-variable/noto-sans-jp";
 interface Props {
   title: string;
+  path: string;
 }
-const { title } = Astro.props;
+const { title, path } = Astro.props;
 
 const links = [
   { label: "Top", path: "/" },
-  { label: "研究内容", path: "/" },
-  { label: "研究成果", path: "/" },
-  { label: "教員プロフィール", path: "/" },
-  { label: "メンバー", path: "/" },
-  { label: "活動報告", path: "/" },
-  { label: "学内ページ", path: "/" },
+  { label: "研究内容", path: "/study" },
+  { label: "研究成果", path: "/result" },
+  { label: "教員プロフィール", path: "/profile" },
+  { label: "メンバー", path: "/members" },
+  { label: "活動報告", path: "/reports" },
+  {
+    label: "学内ページ",
+    path: "https://sites.google.com/shibaura-it.ac.jp/manabe-intra/",
+  },
 ];
 ---
 
@@ -35,9 +40,9 @@ const links = [
       content="_hycogv11tb4ZSjSPQdAp1TJ_H0n42r43ViLtRjePzA"
     />
   </head>
-  <body>
-    <WideHeader nowPath="/" links={links} />
-    <NarrowHeader nowPath="/" links={links} />
+  <body class={css({ margin: 0, fontFamily: "Noto Sans JP" })}>
+    <WideHeader nowPath={path} links={links} />
+    <NarrowHeader nowPath={path} links={links} />
     <slot />
     <footer
       class={css({
