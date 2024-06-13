@@ -7,7 +7,7 @@ interface Props {
   }[];
   nowPath: string;
 }
-const { links } = Astro.props;
+const { links, nowPath } = Astro.props;
 ---
 
 <div
@@ -58,6 +58,20 @@ const { links } = Astro.props;
               textDecoration: "none",
               display: "block",
               width: "fit-content",
+              position: "relative",
+              _after:
+                nowPath === link.path
+                  ? {
+                      content: "''",
+                      position: "absolute",
+                      display: "block",
+                      width: "100%",
+                      height: "2px",
+                      backgroundColor: "#e96656",
+                      bottom: "-6px",
+                      left: 0,
+                    }
+                  : {},
             })}
           >
             {link.label}
