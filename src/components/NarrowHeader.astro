@@ -1,0 +1,107 @@
+---
+import { css } from "../../styled-system/css";
+import { LuMenu } from "react-icons/lu";
+interface Props {
+  links: {
+    path: string;
+    label: string;
+  }[];
+  nowPath: string;
+}
+const { links } = Astro.props;
+---
+
+<div
+  class={css({
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+    left: 0,
+    background: "white",
+    padding: "14px 16px",
+    boxShadow:
+      "rgb(60 64 67 / 10%) 0px 1px 2px, rgb(60 64 67 / 10%) 0px 2px 6px 2px",
+    backdropFilter: "blur(10px)",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    "@media (min-width: 768px)": {
+      display: "none",
+    },
+  })}
+>
+  <a href="/" class={css({ width: "fit-content", display: "block", ml: 3 })}>
+    <h1
+      class={css({
+        fontSize: "20px",
+        display: "block",
+        width: "fit-content",
+      })}
+    >
+      ManabeLab
+    </h1>
+  </a>
+  <div
+    class={css({
+      display: "flex",
+      justifyContent: "flex-end",
+      gap: 8,
+      alignItems: "center",
+      fontSize: "28px",
+    })}
+    id="menuButton"
+  >
+    <LuMenu />
+  </div>
+  <div
+    id="menu"
+    class={css({
+      display: "none",
+      position: "fixed",
+      top: "58px",
+      left: 0,
+      width: "100%",
+      height: "calc(100svh - 58px)",
+      background: "#fffd",
+      backdropFilter: "blur(10px)",
+      zIndex: 99,
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexDirection: "column",
+      gap: 8,
+      padding: 8,
+    })}
+  >
+    {
+      links.map((link) => (
+        <a
+          href={link.path}
+          class={css({
+            display: "block",
+            padding: "8px 16px",
+            width: "100%",
+            textAlign: "center",
+            borderRadius: 8,
+            "&:hover": {
+              opacity: 0.5,
+            },
+          })}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const menuButton = document.getElementById("menuButton") as HTMLElement;
+  menuButton.addEventListener("click", () => {
+    const menu = document.getElementById("menu") as HTMLElement;
+    if (menu.style.display === "none") {
+      menu.style.display = "flex";
+    } else {
+      menu.style.display = "none";
+    }
+  });
+</script>

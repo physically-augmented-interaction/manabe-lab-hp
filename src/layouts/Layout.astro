@@ -1,0 +1,73 @@
+---
+import NarrowHeader from "../components/NarrowHeader.astro";
+import WideHeader from "../components/WideHeader.astro";
+import { css } from "../../styled-system/css";
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const links = [
+  { label: "Top", path: "/" },
+  { label: "研究内容", path: "/" },
+  { label: "研究成果", path: "/" },
+  { label: "教員プロフィール", path: "/" },
+  { label: "メンバー", path: "/" },
+  { label: "活動報告", path: "/" },
+  { label: "学内ページ", path: "/" },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="ScombZ Utiliesで、ScombZをもっと便利に。"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta
+      name="google-site-verification"
+      content="_hycogv11tb4ZSjSPQdAp1TJ_H0n42r43ViLtRjePzA"
+    />
+  </head>
+  <body>
+    <WideHeader nowPath="/" links={links} />
+    <NarrowHeader nowPath="/" links={links} />
+    <slot />
+    <footer
+      class={css({
+        textAlign: "center",
+        px: 4,
+        py: 6,
+        width: "100%",
+        bgColor: "#272727",
+        color: "#939393",
+      })}
+    >
+      <p>東京都江東区豊洲3-7-5 研究棟 13M32</p>
+    </footer>
+
+    <style is:global>
+      html {
+        font-family: system-ui, sans-serif;
+        background-size: 224px;
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+    </style>
+  </body>
+</html>

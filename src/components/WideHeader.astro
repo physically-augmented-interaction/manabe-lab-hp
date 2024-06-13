@@ -1,0 +1,69 @@
+---
+import { css } from "../../styled-system/css";
+interface Props {
+  links: {
+    path: string;
+    label: string;
+  }[];
+  nowPath: string;
+}
+const { links } = Astro.props;
+---
+
+<div
+  class={css({
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+    left: 0,
+    background: "white",
+    padding: "14px 40px",
+    boxShadow:
+      "rgb(60 64 67 / 10%) 0px 1px 2px, rgb(60 64 67 / 10%) 0px 2px 6px 2px",
+    backdropFilter: "blur(10px)",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    "@media (max-width: 767px)": {
+      display: "none",
+    },
+  })}
+>
+  <a href="/" class={css({ width: "fit-content", display: "block" })}>
+    <h1
+      class={css({
+        fontSize: "20px",
+        display: "block",
+        width: "fit-content",
+      })}
+    >
+      ManabeLab
+    </h1>
+  </a>
+  <div
+    class={css({
+      display: "flex",
+      justifyContent: "flex-end",
+      gap: 8,
+      alignItems: "center",
+    })}
+  >
+    <div class={css({ display: "flex", gap: 5, alignItems: "center" })}>
+      {
+        links.map((link) => (
+          <a
+            href={link.path}
+            class={css({
+              color: "black",
+              textDecoration: "none",
+              display: "block",
+              width: "fit-content",
+            })}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
