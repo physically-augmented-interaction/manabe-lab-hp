@@ -1,0 +1,133 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "./Layout.astro";
+import "../index.css";
+
+type Props = CollectionEntry<"reports">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<Layout title={title} path="/reports">
+  <body>
+    <main>
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <img width={1020} height={510} src={heroImage} alt="" />
+            )
+          }
+        </div>
+        <div class="prose">
+          <div class="title">
+            <div class="date">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    最終更新: <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <h1>{title}</h1>
+            <hr />
+          </div>
+          <div class="markdown">
+            <slot />
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</Layout>
+<style>
+  main {
+    width: calc(100% - 2em);
+    max-width: 100%;
+    margin: 0;
+  }
+  .hero-image {
+    width: 100%;
+  }
+  .hero-image img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+  }
+  .prose {
+    width: 720px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 1em;
+    color: rgb(var(--gray-dark));
+  }
+  .title {
+    margin-bottom: 1em;
+    padding: 1em 0;
+    text-align: center;
+    line-height: 1;
+  }
+  .title h1 {
+    margin: 0 0 0.5em 0;
+  }
+  .date {
+    margin-bottom: 0.5em;
+    color: rgb(var(--gray));
+  }
+  .last-updated-on {
+    font-style: italic;
+  }
+
+  .markdown {
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+    h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+    h3 {
+      font-size: 1.25em;
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+    h4 {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+    h5 {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    h6 {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    p {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    code {
+      background-color: rgb(var(--gray-light));
+      padding: 0.1em 0.25em;
+      border-radius: 0.25em;
+    }
+    ul {
+      list-style-type: disc;
+      margin: 0;
+      padding: 0;
+    }
+    ul ul {
+      list-style-type: circle;
+      margin-left: 20px;
+    }
+  }
+</style>
