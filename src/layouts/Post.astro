@@ -3,37 +3,108 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import Layout from "./Layout.astro";
 import "../index.css";
+import { css } from "../../styled-system/css";
 
 type Props = CollectionEntry<"reports">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  tags = [],
+} = Astro.props;
 ---
 
 <Layout title={title} path="/reports">
   <body>
-    <main>
+    <main
+      class={css({
+        py: "2rem",
+        mx: "1rem",
+      })}
+    >
       <article>
-        <div class="hero-image">
+        <div
+          class={css({
+            width: "100%",
+          })}
+        >
           {
             heroImage && (
-              <img width={1020} height={510} src={heroImage} alt="" />
+              <img
+                src={heroImage}
+                alt=""
+                class={css({
+                  width: "95%",
+                  maxWidth: "700px",
+                  borderRadius: "0.5em",
+                  boxShadow: "0 0 0.5em #0004",
+                  margin: "auto",
+                })}
+              />
             )
           }
         </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
+        <div class={css({ maxWidth: "720px", margin: "2rem auto" })}>
+          <div
+            class={css({
+              _after: {
+                content: "''",
+                display: "block",
+                width: "70%",
+                margin: "1rem auto",
+                height: "3px",
+                backgroundColor: "#e96656",
+              },
+            })}
+          >
+            <h1
+              class={css({
+                fontSize: "1.4rem",
+                fontWeight: "bold",
+                textAlign: "center",
+                textWrap: "wrap",
+                wordBreak: "auto-phrase",
+              })}
+            >
+              {title}
+            </h1>
+          </div>
+
+          <div class={css({ margin: "0 auto" })}>
+            <div class={css({ display: "flex", gap: "1em" })}>
+              <p>カテゴリ:</p>
               {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    最終更新: <FormattedDate date={updatedDate} />
+                tags.map((tag) => (
+                  <div
+                    class={css({
+                      display: "inline-block",
+                      color: "#666",
+                    })}
+                  >
+                    {tag}
                   </div>
-                )
+                ))
               }
             </div>
-            <h1>{title}</h1>
-            <hr />
+          </div>
+          <div
+            class={css({
+              margin: "0 auto",
+              marginBottom: "2rem",
+              textAlign: "right",
+            })}
+          >
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div>
+                  最終更新: <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
           </div>
           <div class="markdown">
             <slot />
@@ -44,44 +115,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   </body>
 </Layout>
 <style>
-  main {
-    width: calc(100% - 2em);
-    max-width: 100%;
-    margin: 0;
-  }
-  .hero-image {
-    width: 100%;
-  }
-  .hero-image img {
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-  }
-  .prose {
-    width: 720px;
-    max-width: calc(100% - 2em);
-    margin: auto;
-    padding: 1em;
-    color: rgb(var(--gray-dark));
-  }
-  .title {
-    margin-bottom: 1em;
-    padding: 1em 0;
-    text-align: center;
-    line-height: 1;
-  }
-  .title h1 {
-    margin: 0 0 0.5em 0;
-  }
-  .date {
-    margin-bottom: 0.5em;
-    color: rgb(var(--gray));
-  }
-  .last-updated-on {
-    font-style: italic;
-  }
-
   .markdown {
     h1 {
       font-size: 2em;

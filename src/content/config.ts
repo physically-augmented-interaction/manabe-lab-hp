@@ -10,6 +10,7 @@ const reports = defineCollection({
     pubDate: z.string(),
     updatedDate: z.string().optional(),
     heroImage: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
