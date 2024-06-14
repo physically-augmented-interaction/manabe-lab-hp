@@ -1,7 +1,7 @@
 ---
 import { css } from "../../../styled-system/css";
-import NewsTopics from "./NewsTopics.astro";
-import Paragraph from "./Paragraph.astro";
+import NewsTopicsSwiper from "./NewsTopicsSwiper.astro";
+import NarrowNewsTopics from "./NarrowNewsTopics.astro";
 ---
 
 <div
@@ -24,6 +24,25 @@ import Paragraph from "./Paragraph.astro";
     更新情報
   </h2>
   <div>
-    <NewsTopics />
+    <div
+      class={css({
+        display: "block",
+        sm: {
+          display: "none",
+        },
+      })}
+    >
+      <NarrowNewsTopics />
+    </div>
+    <div
+      class={css({
+        display: "none",
+        sm: {
+          display: "block",
+        },
+      })}
+    >
+      <NewsTopicsSwiper />
+    </div>
   </div>
 </div>

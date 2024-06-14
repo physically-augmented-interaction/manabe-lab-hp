@@ -1,0 +1,139 @@
+---
+import { css } from "../../../styled-system/css";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "../FormattedDate.astro";
+
+const posts = (await getCollection("reports")).sort(
+  (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+);
+---
+
+<div class={css({ height: "100%" })}>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {
+        posts.map((post) => (
+          <div class="swiper-slide">
+            <a
+              href={`/reports/${post.slug}/`}
+              class={css({
+                height: "100%",
+              })}
+            >
+              <div
+                class={css({
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "start",
+                  textAlign: "center",
+                  gap: 2,
+                  padding: 4,
+                  height: "100%",
+                  borderRadius: 10,
+                  "&:hover": {
+                    background: "#f8f8f8",
+                  },
+                })}
+              >
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                  class={css({
+                    display: "block",
+                    width: "80%",
+                    maxWidth: "400px",
+                  })}
+                />
+                <h4
+                  class={css({
+                    fontSize: "1.1rem",
+                    fontWeight: "bold",
+                  })}
+                >
+                  {post.data.title}
+                </h4>
+                <p
+                  class={css({
+                    fontSize: "0.9rem",
+                    color: "gray",
+                  })}
+                >
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button swiper-button-prev"></div>
+    <div class="swiper-button swiper-button-next"></div>
+  </div>
+</div>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .swiper-wrapper {
+    width: 50vw;
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .swiper .swiper-slide-item {
+    height: 100%;
+  }
+  .swiper-button::after {
+    font-size: 32px;
+    color: #bbb;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css/bundle";
+  import { slide } from "astro:transitions";
+
+  export const swiperConfig = {
+    modules: [Navigation, Pagination, Autoplay],
+    speed: 800,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    slidesPerView: 2,
+    spaceBetween: 10,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  };
+
+  const swiper = new Swiper(".swiper", swiperConfig);
+</script>

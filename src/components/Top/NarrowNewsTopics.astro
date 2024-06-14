@@ -1,0 +1,66 @@
+---
+import { css } from "../../../styled-system/css";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "../FormattedDate.astro";
+
+const posts = (await getCollection("reports")).sort(
+  (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+);
+---
+
+<div class={css({ height: "100%" })}>
+  {
+    posts.map((post) => (
+      <a
+        href={`/reports/${post.slug}/`}
+        class={css({
+          height: "100%",
+        })}
+      >
+        <div
+          class={css({
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "start",
+            textAlign: "center",
+            gap: 2,
+            padding: 4,
+            height: "100%",
+            borderRadius: 10,
+            "&:hover": {
+              background: "#f8f8f8",
+            },
+          })}
+        >
+          <img
+            src={post.data.heroImage}
+            alt={post.data.title}
+            class={css({
+              display: "block",
+              width: "80%",
+              maxWidth: "400px",
+            })}
+          />
+          <h4
+            class={css({
+              fontSize: "1.1rem",
+              fontWeight: "bold",
+            })}
+          >
+            {post.data.title}
+          </h4>
+          <p
+            class={css({
+              fontSize: "0.9rem",
+              color: "gray",
+            })}
+          >
+            <FormattedDate date={post.data.pubDate} />
+          </p>
+        </div>
+      </a>
+    ))
+  }
+</div>

@@ -1,17 +1,16 @@
 ---
 interface Props {
-  date: Date;
+  date: string;
 }
 
 const { date } = Astro.props;
+import { format } from "date-fns-tz";
 ---
 
-<time datetime={date.toISOString()}>
+<time>
   {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    format(date, "yyyy年MM月dd日", {
+      timeZone: "Asia/Tokyo",
     })
   }
 </time>
