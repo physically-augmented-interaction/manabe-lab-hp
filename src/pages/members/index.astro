@@ -1,0 +1,57 @@
+---
+import { css } from "../../../styled-system/css";
+import Member from "../../components/Member.astro";
+import PageHead from "../../components/PageHead.astro";
+import "../../index.css";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="メンバー" path="/members">
+  <main class={css({ paddingBottom: "2rem" })}>
+    <PageHead> メンバー </PageHead>
+
+    <div
+      class={css({
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: 4,
+        padding: 4,
+      })}
+    >
+      <Member
+        name="Hiroyuki Manabe"
+        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
+        role="芝浦工業大学 工学部 情報工学科 教授"
+        image="/manabe_icon.jpg"
+      />
+      <Member
+        name="Hiroyuki Manabe"
+        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
+        role="芝浦工業大学 工学部 情報工学科 教授"
+        image="/manabe_icon.jpg"
+      />
+      <Member
+        name="Hiroyuki Manabe"
+        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
+        role="芝浦工業大学 工学部 情報工学科 教授"
+        image="/manabe_icon.jpg"
+      />
+    </div>
+    <a
+      href="/members/graduated"
+      class={css({
+        color: "{colors.rose.800}",
+        display: "flex",
+        alignItems: "center",
+        gap: ".2rem",
+        borderBottom: "1px solid",
+        width: "fit-content",
+        margin: ".3rem auto 0",
+        "&:hover": {
+          color: "{colors.rose.500}",
+        },
+      })}>卒業生メンバー</a
+    >
+  </main>
+</Layout>

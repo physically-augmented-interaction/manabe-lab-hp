@@ -48,6 +48,11 @@ const { links } = Astro.props;
       gap: 8,
       alignItems: "center",
       fontSize: "28px",
+      cursor: "pointer",
+      userSelect: "none",
+      "&:hover": {
+        opacity: 0.5,
+      },
     })}
     id="menuButton"
   >
@@ -55,8 +60,8 @@ const { links } = Astro.props;
   </div>
   <div
     id="menu"
+    style={{ display: "none" }}
     class={css({
-      display: "none",
       position: "fixed",
       top: "58px",
       left: 0,
@@ -84,6 +89,7 @@ const { links } = Astro.props;
             borderRadius: 8,
             "&:hover": {
               opacity: 0.5,
+              textDecoration: "underline",
             },
           })}
         >

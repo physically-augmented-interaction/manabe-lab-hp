@@ -1,0 +1,23 @@
+---
+import { css } from "../../../styled-system/css";
+import Member from "../../components/Member.astro";
+import PageHead from "../../components/PageHead.astro";
+import "../../index.css";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="卒業生メンバー" path="/members">
+  <PageHead> 卒業生メンバー </PageHead>
+
+  <div
+    class={css({
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      gap: 4,
+      padding: 4,
+    })}
+  >
+    卒業生
+  </div>
+</Layout>

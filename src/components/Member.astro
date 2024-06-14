@@ -1,0 +1,70 @@
+---
+import { css } from "../../styled-system/css";
+import { FiLink } from "react-icons/fi";
+
+interface Props {
+  name: string;
+  role?: string;
+  link?: string;
+  color?: string;
+  image?: string;
+}
+const {
+  name,
+  role,
+  link,
+  color = "#000",
+  image = "/default_icon.jpg",
+} = Astro.props;
+---
+
+<div
+  class={css({
+    color: "#fff",
+    backgroundColor: color,
+    boxShadow: "0 0 10px #0006",
+    width: "200px",
+    overflow: "hidden",
+  })}
+>
+  <img src={image} alt={name} width="200" />
+  <div class={css({ padding: "0 .5rem 1rem .5rem", textAlign: "center" })}>
+    <h3
+      class={css({
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        margin: "0",
+        padding: "0.5rem",
+        backgroundColor: "#000",
+        color: "#fff",
+      })}
+    >
+      {name}
+    </h3>
+    <p class={css({ wordBreak: "keep-all" })}>
+      {role}
+    </p>
+    {
+      link && (
+        <a
+          href={link}
+          class={css({
+            color: "{colors.rose.400}",
+            display: "flex",
+            alignItems: "center",
+            gap: ".2rem",
+            borderBottom: "1px solid",
+            width: "fit-content",
+            margin: ".3rem auto 0",
+            "&:hover": {
+              color: "{colors.rose.500}",
+            },
+          })}
+        >
+          <FiLink />
+          Link
+        </a>
+      )
+    }
+  </div>
+</div>
