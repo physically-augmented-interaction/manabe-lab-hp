@@ -140,10 +140,8 @@ import Layout from "../layouts/Layout.astro";
 
   const pageTitle = document.getElementById("page-title") as HTMLHeadingElement;
 
-  if (search) {
-    document.title = `「${search}」の検索結果 ${document.title}`;
-    pageTitle.textContent = `「${search}」の検索結果`;
-  }
+  document.title = `「${search}」の検索結果 ${document.title}`;
+  pageTitle.textContent = `「${search}」の検索結果`;
 
   const searchResults = posts.filter((post) => {
     return (
@@ -170,9 +168,9 @@ import Layout from "../layouts/Layout.astro";
 
     const title = result.querySelector(".title") as HTMLHeadingElement;
     const date = result.querySelector(".date") as HTMLParagraphElement;
-    const description = result.querySelector(
+    const descriptions = result.querySelectorAll(
       ".description",
-    ) as HTMLParagraphElement;
+    ) as NodeListOf<HTMLParagraphElement>;
     const img = result.querySelector("img") as HTMLImageElement;
     const a = result.querySelector("a") as HTMLAnchorElement;
 
@@ -180,7 +178,9 @@ import Layout from "../layouts/Layout.astro";
     date.textContent = format(new Date(post.data.pubDate), "yyyy年MM月dd日", {
       timeZone: "Asia/Tokyo",
     });
-    description.textContent = post.data.description;
+    descriptions.forEach((desc) => {
+      desc.textContent = post.data.description;
+    });
     if (post.data.heroImage) {
       img.src = post.data.heroImage;
       img.alt = post.data.title;

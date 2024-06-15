@@ -10,14 +10,7 @@ import { format } from "date-fns-tz";
 
 type Props = CollectionEntry<"reports">["data"];
 
-const {
-  title,
-  description,
-  pubDate,
-  updatedDate,
-  heroImage,
-  tags = [],
-} = Astro.props;
+const { title, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
 ---
 
 <Layout title={title} path="/reports">
