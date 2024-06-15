@@ -59,6 +59,10 @@ const { links, nowPath } = Astro.props;
               display: "block",
               width: "fit-content",
               position: "relative",
+              transition: "color 0.3s",
+              "&:hover": {
+                color: "#e96656",
+              },
               _after:
                 nowPath === link.path
                   ? {
