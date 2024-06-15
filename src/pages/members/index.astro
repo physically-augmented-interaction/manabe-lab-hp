@@ -4,40 +4,43 @@ import Member from "../../components/Member.astro";
 import PageHead from "../../components/PageHead.astro";
 import "../../index.css";
 import Layout from "../../layouts/Layout.astro";
+import { enrolledMembers } from "../../content/members/enrolled";
 ---
 
 <Layout title="メンバー" path="/members">
-  <main class={css({ paddingBottom: "2rem" })}>
+  <main
+    class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
+  >
     <PageHead> メンバー </PageHead>
-
-    <div
-      class={css({
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: 4,
-        padding: 4,
-      })}
-    >
-      <Member
-        name="Hiroyuki Manabe"
-        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
-        role="芝浦工業大学 工学部 情報工学科 教授"
-        image="/manabe_icon.jpg"
-      />
-      <Member
-        name="Hiroyuki Manabe"
-        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
-        role="芝浦工業大学 工学部 情報工学科 教授"
-        image="/manabe_icon.jpg"
-      />
-      <Member
-        name="Hiroyuki Manabe"
-        link="http://pai.ise.shibaura-it.ac.jp/manabe.html"
-        role="芝浦工業大学 工学部 情報工学科 教授"
-        image="/manabe_icon.jpg"
-      />
-    </div>
+    <section class={css({ padding: "1rem 3rem" })}>
+      {
+        enrolledMembers.map((members) => (
+          <div class={css({ marginBottom: "2rem", maxWidth: "880px" })}>
+            <h2
+              class={css({
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+              })}
+            >
+              {members.grade}
+            </h2>
+            <div
+              class={css({
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "start",
+                gap: 4,
+                padding: 4,
+              })}
+            >
+              {members.members.map((member) => (
+                <Member {...member} color={member.color ?? members.color} />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </section>
     <a
       href="/members/graduated"
       class={css({

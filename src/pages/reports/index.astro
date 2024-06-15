@@ -4,6 +4,7 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../index.css";
 import { css } from "../../../styled-system/css";
+import PageHead from "../../components/PageHead.astro";
 
 const posts = (await getCollection("reports")).sort(
   (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
@@ -11,8 +12,9 @@ const posts = (await getCollection("reports")).sort(
 ---
 
 <Layout title="活動報告" path="/reports">
-  <body>
-    <main
+  <main class={css({ maxWidth: "1400px", margin: "0 auto" })}>
+    <PageHead> メンバー </PageHead>
+    <div
       class={css({
         display: "flex",
         flexDirection: "column",
@@ -25,7 +27,7 @@ const posts = (await getCollection("reports")).sort(
         },
       })}
     >
-      <section class={css({ width: "100%", maxWidth: "1200px" })}>
+      <section class={css({ width: "100%", maxWidth: "1100px" })}>
         <ul
           class={css({
             display: "flex",
@@ -129,6 +131,6 @@ const posts = (await getCollection("reports")).sort(
         </ul>
       </section>
       <section class={css({})}>検索ここ</section>
-    </main>
-  </body>
+    </div>
+  </main>
 </Layout>

@@ -1,28 +1,23 @@
 ---
 import { css } from "../../styled-system/css";
 import { FiLink } from "react-icons/fi";
+import type { Member as MemberType } from "../types/member";
 
-interface Props {
-  name: string;
-  role?: string;
-  link?: string;
-  color?: string;
-  image?: string;
-}
 const {
   name,
+  altName,
   role,
   link,
   color = "#000",
   image = "/default_icon.jpg",
-} = Astro.props;
+} = Astro.props as MemberType;
 ---
 
 <div
+  style={{ backgroundColor: color }}
   class={css({
     color: "#fff",
-    backgroundColor: color,
-    boxShadow: "0 0 10px #0006",
+    boxShadow: "0 0 6px #6666",
     width: "200px",
     overflow: "hidden",
   })}
@@ -30,18 +25,18 @@ const {
   <img src={image} alt={name} width="200" />
   <div class={css({ padding: "0 .5rem 1rem .5rem", textAlign: "center" })}>
     <h3
+      style={{ backgroundColor: color }}
       class={css({
         fontSize: "1.1rem",
         fontWeight: "bold",
         margin: "0",
         padding: "0.5rem",
-        backgroundColor: "#000",
         color: "#fff",
       })}
     >
-      {name}
+      {altName ?? name}
     </h3>
-    <p class={css({ wordBreak: "keep-all" })}>
+    <p class={css({ wordBreak: "keep-all", fontWeight: 700 })}>
       {role}
     </p>
     {
