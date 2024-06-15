@@ -1,0 +1,62 @@
+---
+import { css } from "../../styled-system/css";
+import SearchBox from "./SearchBox.astro";
+---
+
+<div
+  class={css({
+    width: "80%",
+    mx: "auto",
+    mt: "2rem",
+    pt: "2rem",
+    borderTop: "1px solid #ddd",
+    xl: {
+      mt: 0,
+      pt: 0,
+      borderTop: "none",
+      paddingLeft: "1rem",
+      width: "250px",
+      minWidth: "250px",
+      mx: 0,
+      borderLeft: "1px solid #eee",
+    },
+  })}
+>
+  <SearchBox />
+  <div class={css({ mt: 4 })}>
+    <h4
+      class={css({
+        fontWeight: "bold",
+        width: "fit-content",
+        _after: {
+          content: "''",
+          display: "block",
+          width: "100%",
+          height: "2px",
+          backgroundColor: "#e96656",
+          marginTop: "0.5rem",
+        },
+      })}
+    >
+      最近の投稿
+    </h4>
+  </div>
+  <div class={css({ mt: 4 })}>
+    <h4
+      class={css({
+        fontWeight: "bold",
+        width: "fit-content",
+        _after: {
+          content: "''",
+          display: "block",
+          width: "100%",
+          height: "2px",
+          backgroundColor: "#e96656",
+          marginTop: "0.5rem",
+        },
+      })}
+    >
+      アーカイブ
+    </h4>
+  </div>
+</div>

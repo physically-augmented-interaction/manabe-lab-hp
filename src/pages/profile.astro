@@ -6,6 +6,8 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="プロフィール" path="/profile">
-  <PageHead> プロフィール </PageHead>
-  <p>Markdown here</p>
+  <main class={css({ maxWidth: "1400px", mx: "auto", pb: "3rem" })}>
+    <PageHead> プロフィール </PageHead>
+    <p>Markdown here</p>
+  </main>
 </Layout>

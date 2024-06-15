@@ -5,6 +5,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 import Layout from "./Layout.astro";
 import "../index.css";
 import { css } from "../../styled-system/css";
+import SideBar from "../components/SideBar.astro";
 
 type Props = CollectionEntry<"reports">["data"];
 
@@ -19,14 +20,18 @@ const {
 ---
 
 <Layout title={title} path="/reports">
-  <body>
-    <main
+  <div class={css({ maxWidth: "1400px", mx: "auto", pb: "3rem" })}>
+    <div
       class={css({
         py: "2rem",
         mx: "1rem",
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
       })}
     >
-      <article>
+      <article class={css({ width: "90%", xl: { width: "70%" }, mx: "auto" })}>
         <div
           class={css({
             width: "100%",
@@ -38,8 +43,8 @@ const {
                 src={heroImage}
                 alt=""
                 class={css({
+                  maxWidth: "800px",
                   width: "95%",
-                  maxWidth: "700px",
                   borderRadius: "0.5em",
                   boxShadow: "0 0 0.5em #0004",
                   margin: "auto",
@@ -48,7 +53,7 @@ const {
             )
           }
         </div>
-        <div class={css({ maxWidth: "720px", margin: "2rem auto" })}>
+        <div class={css({ margin: "2rem auto" })}>
           <div
             class={css({
               _after: {
@@ -135,8 +140,9 @@ const {
           </a>
         </div>
       </article>
-    </main>
-  </body>
+      <SideBar />
+    </div>
+  </div>
 </Layout>
 <style>
   .markdown {

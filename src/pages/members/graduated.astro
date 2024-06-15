@@ -5,115 +5,123 @@ import "../../index.css";
 import Layout from "../../layouts/Layout.astro";
 import { MdArrowBackIos } from "react-icons/md";
 import { graduatedMembers } from "../../content/members/graduated";
+import SideBar from "../../components/SideBar.astro";
 ---
 
 <Layout title="卒業生メンバー" path="/members">
-  <main
-    class={css({
-      maxWidth: "1400px",
-      margin: "0 auto",
-      lg: { padding: "0 2rem" },
-    })}
+  <div
+    class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
   >
     <PageHead> 卒業生メンバー </PageHead>
-    <section class={css({ padding: "0 1rem 1rem" })}>
-      {
-        graduatedMembers.map((yearGroup) => (
-          <div
-            class={css({
-              padding: "1rem 0",
-              margin: "1rem 0",
-              borderTop: "1px solid {colors.neutral.200}",
-            })}
-          >
-            <h2
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <main class={css({ px: "2rem" })}>
+        {
+          graduatedMembers.map((yearGroup) => (
+            <div
               class={css({
-                fontSize: "1.5rem",
-                fontWeight: "bold",
+                padding: "1rem 0",
+                margin: "1rem 0",
+                borderTop: "1px solid {colors.neutral.200}",
               })}
             >
-              {yearGroup.graduatedYear}年度卒業
-            </h2>
-            {yearGroup.group.map((curriculumGroup) => (
-              <div>
-                <h3
-                  class={css({
-                    fontSize: "1.2rem",
-                    fontWeight: "bold",
-                    margin: "1rem 0 .5rem",
-                  })}
-                >
-                  {curriculumGroup.curriculum}
-                </h3>
-                <table class={css({ width: "100%" })}>
-                  <thead class={css({ backgroundColor: "{colors.sky.100}" })}>
-                    <tr
-                      class={css({
-                        borderBottom: "1px solid {colors.neutral.200}",
-                        height: "2.4rem",
-                        textAlign: "left",
-                      })}
-                    >
-                      <th class={css({ width: "10rem" })}>名前</th>
-                      <th>研究</th>
-                      <th class={css({ width: "6rem" })}>進路</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {curriculumGroup.members.map((member) => (
+              <h2
+                class={css({
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                })}
+              >
+                {yearGroup.graduatedYear}年度卒業
+              </h2>
+              {yearGroup.group.map((curriculumGroup) => (
+                <div>
+                  <h3
+                    class={css({
+                      fontSize: "1.2rem",
+                      fontWeight: "bold",
+                      margin: "1rem 0 .5rem",
+                    })}
+                  >
+                    {curriculumGroup.curriculum}
+                  </h3>
+                  <table class={css({ width: "100%" })}>
+                    <thead class={css({ backgroundColor: "{colors.sky.100}" })}>
                       <tr
                         class={css({
                           borderBottom: "1px solid {colors.neutral.200}",
                           height: "2.4rem",
-                          backgroundColor: "{colors.neutral.50}",
-                          "&:nth-child(odd)": {
-                            backgroundColor: "#fff",
-                          },
-                          "&:hover": {
-                            backgroundColor: "{colors.neutral.100}",
-                          },
+                          textAlign: "left",
                         })}
                       >
-                        <td>{member.name}</td>
-                        <td>{member.study}</td>
-                        <td>{member.careerPath}</td>
+                        <th class={css({ width: "10rem" })}>名前</th>
+                        <th>研究</th>
+                        <th class={css({ width: "6rem" })}>進路</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ))}
-          </div>
-        ))
-      }
-    </section>
+                    </thead>
+                    <tbody>
+                      {curriculumGroup.members.map((member) => (
+                        <tr
+                          class={css({
+                            borderBottom: "1px solid {colors.neutral.200}",
+                            height: "2.4rem",
+                            backgroundColor: "{colors.neutral.50}",
+                            "&:nth-child(odd)": {
+                              backgroundColor: "#fff",
+                            },
+                            "&:hover": {
+                              backgroundColor: "{colors.neutral.100}",
+                            },
+                          })}
+                        >
+                          <td>{member.name}</td>
+                          <td>{member.study}</td>
+                          <td>{member.careerPath}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </div>
+          ))
+        }
 
-    <a href="/members">
-      <div
-        class={css({
-          display: "flex",
-          gap: "0.5em",
-          alignItems: "center",
-          mb: "3rem",
-          ml: "2rem",
-          color: "{colors.rose.700}",
-          "&:hover": {
-            color: "{colors.rose.900}",
-          },
-        })}
-      >
-        <MdArrowBackIos />
-        <div
-          class={css({
-            borderBottom: "1px solid",
-          })}
-        >
-          メンバー一覧にもどる
-        </div>
-      </div>
-    </a>
-  </main>
+        <a href="/members">
+          <div
+            class={css({
+              display: "flex",
+              gap: "0.5em",
+              alignItems: "center",
+              mb: "3rem",
+              ml: "2rem",
+              color: "{colors.rose.700}",
+              "&:hover": {
+                color: "{colors.rose.900}",
+              },
+            })}
+          >
+            <MdArrowBackIos />
+            <div
+              class={css({
+                borderBottom: "1px solid",
+              })}
+            >
+              メンバー一覧にもどる
+            </div>
+          </div>
+        </a>
+      </main>
+      <SideBar />
+    </div>
+  </div>
 </Layout>
+
 <style>
   td,
   th {

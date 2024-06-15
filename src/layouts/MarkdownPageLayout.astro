@@ -1,6 +1,7 @@
 ---
 import { css } from "../../styled-system/css";
 import PageHead from "../components/PageHead.astro";
+import SideBar from "../components/SideBar.astro";
 import "../index.css";
 import Layout from "./Layout.astro";
 
@@ -8,12 +9,22 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} path={frontmatter.path}>
-  <main class={css({ maxWidth: "1400px", mx: "auto", pb: "3rem" })}>
+  <div class={css({ maxWidth: "1400px", mx: "auto", pb: "3rem" })}>
     <PageHead> {frontmatter.title}</PageHead>
-    <section class="markdown">
-      <slot />
-    </section>
-  </main>
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <main class="markdown">
+        <slot />
+      </main>
+      <SideBar />
+    </div>
+  </div>
 </Layout>
 
 <style>

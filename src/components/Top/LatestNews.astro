@@ -2,6 +2,7 @@
 import { css } from "../../../styled-system/css";
 import NewsTopicsSwiper from "./NewsTopicsSwiper.astro";
 import NarrowNewsTopics from "./NarrowNewsTopics.astro";
+import SearchBox from "../SearchBox.astro";
 ---
 
 <div
@@ -17,32 +18,61 @@ import NarrowNewsTopics from "./NarrowNewsTopics.astro";
       textAlign: "center",
       fontWeight: "bold",
       fontSize: "2.5rem",
-      padding: "2rem",
+      px: "2rem",
+      pt: "2rem",
       color: "#404040",
     })}
   >
     更新情報
   </h2>
-  <div>
-    <div
+
+  <div class={css({ mb: "2rem" })}>
+    <h4
       class={css({
-        display: "block",
-        sm: {
-          display: "none",
-        },
+        padding: "1rem 2rem",
+        color: "#404040",
+        fontSize: "1.5rem",
       })}
     >
-      <NarrowNewsTopics />
+      検索
+    </h4>
+    <div class={css({ padding: "0 2rem" })}>
+      <SearchBox />
     </div>
-    <div
+  </div>
+
+  <div>
+    <h4
       class={css({
-        display: "none",
-        sm: {
-          display: "block",
-        },
+        padding: "1rem 2rem",
+        color: "#404040",
+        fontSize: "1.5rem",
       })}
     >
-      <NewsTopicsSwiper />
+      最近の投稿一覧
+    </h4>
+    <div>
+      <div
+        class={css({
+          display: "block",
+          sm: {
+            display: "none",
+          },
+        })}
+      >
+        <NarrowNewsTopics />
+      </div>
+      <div
+        class={css({
+          mx: "2rem",
+          display: "none",
+          sm: {
+            display: "block",
+          },
+        })}
+      >
+        <NewsTopicsSwiper />
+      </div>
     </div>
   </div>
 </div>

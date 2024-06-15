@@ -5,56 +5,69 @@ import PageHead from "../../components/PageHead.astro";
 import "../../index.css";
 import Layout from "../../layouts/Layout.astro";
 import { enrolledMembers } from "../../content/members/enrolled";
+import SideBar from "../../components/SideBar.astro";
 ---
 
 <Layout title="メンバー" path="/members">
-  <main
+  <div
     class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
   >
     <PageHead> メンバー </PageHead>
-    <section class={css({ padding: "1rem 3rem" })}>
-      {
-        enrolledMembers.map((members) => (
-          <div class={css({ marginBottom: "2rem", maxWidth: "880px" })}>
-            <h2
-              class={css({
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              })}
-            >
-              {members.grade}
-            </h2>
-            <div
-              class={css({
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "start",
-                gap: 4,
-                padding: 4,
-              })}
-            >
-              {members.members.map((member) => (
-                <Member {...member} color={member.color ?? members.color} />
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </section>
-    <a
-      href="/members/graduated"
+    <div
       class={css({
-        color: "{colors.rose.800}",
         display: "flex",
-        alignItems: "center",
-        gap: ".2rem",
-        borderBottom: "1px solid",
-        width: "fit-content",
-        margin: ".3rem auto 0",
-        "&:hover": {
-          color: "{colors.rose.500}",
-        },
-      })}>卒業生メンバー</a
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
     >
-  </main>
+      <main>
+        <div class={css({ padding: "1rem 3rem" })}>
+          {
+            enrolledMembers.map((members) => (
+              <div class={css({ marginBottom: "2rem" })}>
+                <h2
+                  class={css({
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                  })}
+                >
+                  {members.grade}
+                </h2>
+                <div
+                  class={css({
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "start",
+                    gap: 4,
+                    padding: 4,
+                  })}
+                >
+                  {members.members.map((member) => (
+                    <Member {...member} color={member.color ?? members.color} />
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <a
+          href="/members/graduated"
+          class={css({
+            color: "{colors.rose.800}",
+            display: "flex",
+            alignItems: "center",
+            gap: ".2rem",
+            borderBottom: "1px solid",
+            width: "fit-content",
+            margin: ".3rem auto 0",
+            "&:hover": {
+              color: "{colors.rose.500}",
+            },
+          })}>卒業生メンバー</a
+        >
+      </main>
+      <SideBar />
+    </div>
+  </div>
 </Layout>

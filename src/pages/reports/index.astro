@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import "../../index.css";
 import { css } from "../../../styled-system/css";
 import PageHead from "../../components/PageHead.astro";
+import SideBar from "../../components/SideBar.astro";
 
 const posts = (await getCollection("reports")).sort(
   (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
@@ -12,22 +13,17 @@ const posts = (await getCollection("reports")).sort(
 ---
 
 <Layout title="活動報告" path="/reports">
-  <main class={css({ maxWidth: "1400px", margin: "0 auto" })}>
-    <PageHead> メンバー </PageHead>
+  <div class={css({ maxWidth: "1400px", margin: "0 auto" })}>
+    <PageHead> 活動報告 </PageHead>
     <div
       class={css({
         display: "flex",
+        justifyContent: "space-between",
         flexDirection: "column",
-        gap: "2rem",
-        alignItems: "start",
-        justifyContent: "center",
-        padding: "1rem",
-        xl: {
-          flexDirection: "row",
-        },
+        xl: { flexDirection: "row" },
       })}
     >
-      <section class={css({ width: "100%", maxWidth: "1100px" })}>
+      <main class={css({ width: "100%" })}>
         <ul
           class={css({
             display: "flex",
@@ -129,8 +125,8 @@ const posts = (await getCollection("reports")).sort(
             ))
           }
         </ul>
-      </section>
-      <section class={css({})}>検索ここ</section>
+      </main>
+      <SideBar />
     </div>
-  </main>
+  </div>
 </Layout>

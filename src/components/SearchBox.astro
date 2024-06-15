@@ -1,0 +1,50 @@
+---
+import { css } from "../../styled-system/css";
+import { MdSearch } from "react-icons/md";
+---
+
+<form action="/search" method="get">
+  <div class={css({ position: "relative", height: "35px" })}>
+    <input
+      type="text"
+      name="query"
+      placeholder="Search"
+      class={css({
+        p: "6px 8px",
+        fontSize: 15,
+        border: "1px solid #ccc",
+        width: "100%",
+        borderRadius: "4px",
+        "&:focus": {
+          outline: "none",
+          borderColor: "#0070f3",
+        },
+        position: "absolute",
+        top: 0,
+        left: 0,
+      })}
+    />
+    <button
+      type="submit"
+      class={css({
+        cursor: "pointer",
+        position: "absolute",
+        height: "28px",
+        aspectRatio: 1,
+        borderRadius: "10000px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: 20,
+        top: "5px",
+        right: "4px",
+        color: "#666",
+        "&:hover": {
+          background: "#eee5",
+        },
+      })}
+    >
+      <MdSearch />
+    </button>
+  </div>
+</form>
