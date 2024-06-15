@@ -1,0 +1,42 @@
+---
+title: "CHI2024にてデモ発表を行いました（M1 櫻井・M1 武田）"
+description: "2024年5月11日から5月16日にアメリカのハワイ州オアフ島にあるHawai`i Convention Centerで開催されたCHI2024に，M1の櫻井瑛一朗と武田和大，B4の上樂大治朗が参加しました．"
+pubDate: "2024-06-07T12:00:00.000Z"
+tags: ["学会発表", "学生報告", "研究成果"]
+---
+
+import ImageTile from "../../components/ImageTile.astro";
+
+M1の武田です．2024年5月11日から5月16日にアメリカのハワイ州オアフ島にある[Hawai\`i Convention Center](https://www.meethawaii.com/convention-center/)で開催されたCHI2024に，M1の櫻井瑛一朗と武田和大，B4の上樂大治朗が参加しました．
+
+発表では，数え切れないほど多くの方に来ていただきました．英語での発表は初めてで緊張していましたが，始まるととても楽しかったです．一緒に来てもらった上樂君にも発表を協力してもらいました．英語での説明は難しかったですが，また国際学会で発表したいと思いました．
+
+<ImageTile
+  srcList={[
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240514_033633856-2.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240514_034843045.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240515_011619126.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240515_012301913.jpg",
+  ]}
+/>
+
+ハワイは日本より少し涼しく過ごしやすい気候でした．時々ゲリラ豪雨に遭いましたが，天気が良いときにたくさん観光することができました．
+
+<ImageTile
+  srcList={[
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/manabe-sleep.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240513_011547852.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/konoki-nannnoki.jpg",
+    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240517_053053005.jpg",
+  ]}
+/>
+
+## 研究概要
+
+## Flushner: A 3D Printing Technique That Inserts Stepped Objects to Achieve Surface Uniformity and High Speed（櫻井）
+
+ラピッドプロトタイピングは，製品開発の初期段階でアイデアを迅速に具現化するために用いられる手法である．これらのプロトタイプは，デザインの評価やフィードバックの収集にも活用される．熱溶解積層方式（FDM）3Dプリンタは，プロトタイプを作製するために用いられる一般的なツールの1つとなっており，コストの劇的な低下により，産業界だけでなく家庭でも使用されることが期待される．しかし，FDM 3Dプリンタの大きな課題として，製作物の大きさに対して印刷時間が長いことが挙げられる．この問題を解決するために，より高価な3Dプリンタを利用したり，3Dプリンタを改造したりすることが挙げられるが，一般家庭でこれらの方法を実現することは難しい．これを踏まえて，スライス手法の最適化や，レーザーカッターを利用した製作手法等，様々な研究が行われてきた．我々は，“Print-Pause-Print”プロトコルを使用して，印刷途中に段差を設けたオブジェクトを挿入することにより，3Dオブジェクトの製作時間を短縮する技術，Fluhsnerを提案する．挿入されたオブジェクトと3Dプリントが“面一”を形成し，モデルの簡略化を必要とせず，表面部分の印刷時間を短縮することができる．場合によってはインフィルやサポートを削減し，さらに印刷時間を短縮することもできる．また，この技術は高価な3Dプリンタや改造された3Dプリンタを必要とせず，安価でシンプルなシングルエクストルーダのFDM 3Dプリンタで適用できる．実験の結果，立方体において，Flushnerでの製作時間は辺の長さの1乗に近似できることが分かった．
+
+## Screen Augmentation Technique Using AR Glasses and Smartphone without External Sensors（武田）
+
+スマホとARグラスを組み合わせた画面拡張は視覚体験を向上させることができるため，多くの研究が行われている．シームレスな画面拡張を行う際，スマホのトラッキング精度が重要となるが，トラッキング精度とシステムの可用性を両立させることが難しい．そこで本研究では，外部センサを使用せずにスマホとARグラスのみで画面拡張を行う手法を提案する．このとき，トラッキングエラーが発生すると考えられるため，2つのディスプレイの映像間でのズレを感じにくくさせる処理を施す．その処理の方法として4種類実装を行い，ユーザにズレを感じにくくさせることができた．そして，この手法で実現できるインタラクションを探索するために，2つのアプリケーションを実装した．

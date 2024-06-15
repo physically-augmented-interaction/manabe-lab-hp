@@ -1,0 +1,48 @@
+---
+import { css } from "../../styled-system/css";
+interface Props {
+  src: string;
+  width?: string;
+  height?: string;
+  aspectRatio?: string;
+  caption?: string;
+}
+const {
+  src,
+  width = "100%",
+  height,
+  aspectRatio = "16/9",
+  caption = "",
+} = Astro.props;
+---
+
+<figure
+  class={css({
+    mx: "auto",
+  })}
+  style={{
+    width: width,
+  }}
+>
+  <img
+    loading="lazy"
+    src={src}
+    alt={caption}
+    class={css({
+      width: "100%",
+      height: height || "auto",
+      aspectRatio: aspectRatio,
+    })}
+  />
+  {
+    caption && (
+      <figcaption
+        class={css({
+          color: "#666",
+        })}
+      >
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>
