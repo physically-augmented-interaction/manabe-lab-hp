@@ -84,14 +84,19 @@ const {
               <p>カテゴリ:</p>
               {
                 tags.map((tag) => (
-                  <div
+                  <a
                     class={css({
                       display: "inline-block",
                       color: "#666",
+                      cursor: "pointer",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
                     })}
+                    href={`/search?tag=${tag}`}
                   >
                     {tag}
-                  </div>
+                  </a>
                 ))
               }
             </div>

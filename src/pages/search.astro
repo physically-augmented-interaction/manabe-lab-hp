@@ -1,0 +1,222 @@
+---
+import { css } from "../../styled-system/css";
+import PageHead from "../components/PageHead.astro";
+import SideBar from "../components/SideBar.astro";
+import "../index.css";
+import Layout from "../layouts/Layout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+---
+
+<Layout title="" path="/searh">
+  <div
+    class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
+  >
+    <PageHead>「」の検索結果</PageHead>
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <main class={css({ width: "100%" })}>
+        <ul
+          id="search-results"
+          class={css({
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            px: "2rem",
+          })}
+        >
+          検索中...
+        </ul>
+      </main>
+      <SideBar />
+    </div>
+  </div>
+
+  <div id="result-template" class={css({ display: "none" })}>
+    <li
+      class={css({
+        borderTop: "1px solid #ccc",
+        pt: "0.5rem",
+        px: "0.5rem",
+      })}
+    >
+      <a
+        class={css({
+          display: "flex",
+          backgroundColor: "#fff",
+          justifyContent: "space-between",
+          padding: ".8rem 1.2rem",
+          borderRadius: "0.5rem",
+          transition: "all 0.4s",
+          gap: "1rem",
+          flexDirection: "column",
+          "&:hover": {
+            textDecoration: "none",
+            backgroundColor: "#e9e9e9",
+          },
+          lg: {
+            flexDirection: "row",
+          },
+        })}
+      >
+        <div class={css({ lg: { width: "calc(100% - 400px)" } })}>
+          <h4
+            class={css({
+              fontSize: "1.2rem",
+              fontWeight: "bold",
+              mb: "0.5rem",
+              textWrap: "wrap",
+              wordBreak: "keep-all",
+            }) + " title"}
+          >
+            title
+          </h4>
+          <p class={css({ fontSize: "0.9rem", color: "#666" })}>
+            <time class="date">date</time>
+          </p>
+          <p
+            class={css({
+              fontSize: "1rem",
+              wordBreak: "auto-phrase",
+              display: "none",
+              lg: { display: "block" },
+            }) + " description"}
+          >
+            description
+          </p>
+        </div>
+        <div
+          class={css({
+            display: "flex",
+            alignItems: "start",
+            justifyContent: "start",
+            gap: "1rem",
+            lg: {
+              width: "400px",
+            },
+          })}
+        >
+          <img
+            src=""
+            alt=""
+            class={css({
+              width: "45%",
+              maxWidth: "500px",
+              display: "none",
+              sm: { display: "block" },
+              lg: { maxWidth: "400px", width: "100%" },
+            })}
+          />
+          <p
+            class={css({
+              fontSize: "1rem",
+              wordBreak: "auto-phrase",
+              display: "block",
+              lg: { display: "none" },
+            }) + " description"}
+          >
+            description
+          </p>
+        </div>
+      </a>
+    </li>
+  </div>
+</Layout>
+
+<script>
+  import { getCollection } from "astro:content";
+  import { format } from "date-fns-tz";
+
+  const posts = (await getCollection("reports")).sort(
+    (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+  );
+
+  const url = new URL(location.href);
+  const tag = url.searchParams.get("tag");
+  const year = url.searchParams.get("year");
+  const search = url.searchParams.get("query");
+
+  const pageTitle = document.getElementById("page-title") as HTMLHeadingElement;
+
+  if (tag) {
+    document.title = `${tag} ${document.title}`;
+    pageTitle.textContent = `タグ:「${tag}」がつけられた活動報告一覧`;
+  }
+  if (year) {
+    document.title = `${year}年 ${document.title}`;
+    pageTitle.textContent = `${year}年`;
+  }
+  if (search) {
+    document.title = `「${search}」の検索結果 ${document.title}`;
+    pageTitle.textContent = `「${search}」の検索結果`;
+  }
+
+  const searchResults = posts.filter((post) => {
+    if (tag) {
+      return post.data.tags?.includes(tag);
+    }
+    if (year) {
+      return new Date(post.data.pubDate).getFullYear() === Number(year);
+    }
+    if (search) {
+      return (
+        post.data.title.includes(search) ||
+        (post.data.tags ?? []).join(" ").includes(search)
+      );
+    }
+  });
+
+  const searchResultsContainer = document.getElementById(
+    "search-results",
+  ) as HTMLUListElement;
+  const resultTemplate = document.querySelector(
+    "#result-template > li",
+  ) as HTMLLIElement;
+
+  if (searchResults.length === 0) {
+    searchResultsContainer.textContent = "検索結果が見つかりませんでした。";
+  } else {
+    searchResultsContainer.textContent = `${searchResults.length}件の検索結果が見つかりました。`;
+  }
+
+  searchResults.forEach((post) => {
+    const result = resultTemplate.cloneNode(true) as HTMLLIElement;
+
+    const title = result.querySelector(".title") as HTMLHeadingElement;
+    const date = result.querySelector(".date") as HTMLParagraphElement;
+    const description = result.querySelector(
+      ".description",
+    ) as HTMLParagraphElement;
+    const img = result.querySelector("img") as HTMLImageElement;
+    const a = result.querySelector("a") as HTMLAnchorElement;
+
+    title.textContent = post.data.title;
+    date.textContent = format(new Date(post.data.pubDate), "yyyy年MM月dd日", {
+      timeZone: "Asia/Tokyo",
+    });
+    description.textContent = post.data.description;
+    if (post.data.heroImage) {
+      img.src = post.data.heroImage;
+      img.alt = post.data.title;
+    } else {
+      img.remove();
+    }
+    a.href = `/reports/${post.slug}/`;
+
+    searchResultsContainer.appendChild(result);
+  });
+</script>
+
+<style>
+  .search-reuslt-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0.5rem;
+  }
+</style>

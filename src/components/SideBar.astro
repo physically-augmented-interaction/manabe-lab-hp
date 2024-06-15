@@ -1,6 +1,18 @@
 ---
 import { css } from "../../styled-system/css";
 import SearchBox from "./SearchBox.astro";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+const posts = (await getCollection("reports")).sort(
+  (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+);
+
+const displayPosts = posts.slice(0, 5);
+const years: number[] = [
+  ...new Set(posts.map((post) => new Date(post.data.pubDate).getFullYear())),
+];
 ---
 
 <div
@@ -14,7 +26,7 @@ import SearchBox from "./SearchBox.astro";
       mt: 0,
       pt: 0,
       borderTop: "none",
-      paddingLeft: "1rem",
+      paddingX: "1rem",
       width: "250px",
       minWidth: "250px",
       mx: 0,
@@ -40,6 +52,29 @@ import SearchBox from "./SearchBox.astro";
     >
       最近の投稿
     </h4>
+    <ul class={css({ listStyle: "square", pl: "1rem" })}>
+      {
+        displayPosts.map((post) => (
+          <li class={css({ mt: 4 })}>
+            <a
+              href={`/reports/${post.slug}/`}
+              class={css({
+                color: "inherit",
+                textDecoration: "none",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              })}
+            >
+              <h5>{post.data.title}</h5>
+            </a>
+            <div class={css({ color: "#999", fontSize: "90%" })}>
+              <FormattedDate date={post.data.pubDate} />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </div>
   <div class={css({ mt: 4 })}>
     <h4
@@ -58,5 +93,25 @@ import SearchBox from "./SearchBox.astro";
     >
       アーカイブ
     </h4>
+    <ul class={css({ listStyle: "none", pl: 0 })}>
+      {
+        years.map((year) => (
+          <li class={css({ mt: 2 })}>
+            <a
+              href={`/search?year=${year}`}
+              class={css({
+                color: "inherit",
+                textDecoration: "none",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              })}
+            >
+              {year}年
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
