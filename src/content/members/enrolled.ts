@@ -28,7 +28,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
         altName: "Hiroyuki Manabe",
         role: "芝浦工業大学 工学部 情報工学科 教授",
         link: "http://pai.ise.shibaura-it.ac.jp/manabe.html",
-        image: "/manabe_icon.jpg",
+        image: "/manabe_icon.webp",
       },
     ],
   },

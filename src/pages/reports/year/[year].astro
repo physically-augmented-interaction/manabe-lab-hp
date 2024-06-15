@@ -30,7 +30,7 @@ const posts = (await getCollection("reports"))
   );
 ---
 
-<Layout title={`${year}年の活動報告`} path={`/reports/${year}`}>
+<Layout title={`${year}年の活動報告`} path={`/reports`}>
   <div class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
     <PageHead> {year}年の活動報告 </PageHead>
     <div
