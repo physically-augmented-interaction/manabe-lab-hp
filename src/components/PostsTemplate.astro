@@ -1,0 +1,121 @@
+---
+import { css } from "../../styled-system/css";
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  posts: any[];
+}
+const { posts } = Astro.props;
+---
+
+<main class={css({ width: "100%" })}>
+  <ul
+    class={css({
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.5rem",
+      px: "2rem",
+    })}
+  >
+    {
+      posts.map((post, idx) => (
+        <li
+          class={css({
+            borderTop: idx === 0 ? "none" : "1px solid #ccc",
+            pt: "0.5rem",
+            px: "0.5rem",
+          })}
+        >
+          <a
+            href={`/reports/${post.slug}/`}
+            class={css({
+              display: "flex",
+              backgroundColor: "#fff",
+              justifyContent: "space-between",
+              padding: ".8rem 1.2rem",
+              borderRadius: "0.5rem",
+              transition: "all 0.4s",
+              gap: "1rem",
+              flexDirection: "column",
+              "&:hover": {
+                textDecoration: "none",
+                backgroundColor: "#e9e9e9",
+              },
+              lg: {
+                flexDirection: "row",
+              },
+            })}
+          >
+            <div
+              class={css({
+                lg: {
+                  width: post.data.heroImage ? "calc(100% - 400px)" : "100%",
+                },
+              })}
+            >
+              <h4
+                class={css({
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  mb: "0.5rem",
+                  textWrap: "wrap",
+                  wordBreak: "keep-all",
+                })}
+              >
+                {post.data.title}
+              </h4>
+              <p class={css({ fontSize: "0.9rem", color: "#666" })}>
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <p
+                class={css({
+                  fontSize: "1rem",
+                  wordBreak: "auto-phrase",
+                  display: "none",
+                  lg: { display: "block" },
+                })}
+              >
+                {post.data.description}
+              </p>
+            </div>
+            <div
+              class={css({
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "start",
+                gap: "1rem",
+                lg: {
+                  width: post.data.heroImage ? "400px" : "0",
+                },
+              })}
+            >
+              {post.data.heroImage && (
+                <img
+                  src={post.data.heroImage}
+                  alt=""
+                  class={css({
+                    width: "45%",
+                    maxWidth: "500px",
+                    display: "none",
+                    sm: { display: "block" },
+                    lg: { maxWidth: "400px", width: "100%" },
+                  })}
+                />
+              )}
+              <p
+                class={css({
+                  fontSize: "1rem",
+                  wordBreak: "auto-phrase",
+                  display: "block",
+                  lg: { display: "none" },
+                })}
+              >
+                {post.data.description}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</main>

@@ -6,6 +6,7 @@ import Layout from "./Layout.astro";
 import "../index.css";
 import { css } from "../../styled-system/css";
 import SideBar from "../components/SideBar.astro";
+import { format } from "date-fns-tz";
 
 type Props = CollectionEntry<"reports">["data"];
 
@@ -93,7 +94,7 @@ const {
                         textDecoration: "underline",
                       },
                     })}
-                    href={`/search?tag=${tag}`}
+                    href={`/reports/tags/${tag}`}
                   >
                     {tag}
                   </a>
@@ -108,7 +109,14 @@ const {
               textAlign: "right",
             })}
           >
-            <FormattedDate date={pubDate} />
+            <a
+              href={`/reports/year/${format(pubDate, "yyyy")}`}
+              class={css({
+                "&:hover": { textDecoration: "underline" },
+              })}
+            >
+              <FormattedDate date={pubDate} />
+            </a>
             {
               updatedDate && (
                 <div>
@@ -149,57 +157,3 @@ const {
     </div>
   </div>
 </Layout>
-<style>
-  .markdown {
-    h1 {
-      font-size: 2em;
-      font-weight: bold;
-      margin-top: 0.5em;
-    }
-    h2 {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-top: 0.5em;
-    }
-    h3 {
-      font-size: 1.25em;
-      font-weight: bold;
-      margin-top: 0.5em;
-    }
-    h4 {
-      font-size: 1.1em;
-      font-weight: bold;
-      margin-top: 0.5em;
-    }
-    h5 {
-      font-size: 1em;
-      font-weight: bold;
-    }
-    h6 {
-      font-size: 1em;
-      font-weight: bold;
-    }
-    p {
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-    code {
-      padding: 0.1em 0.25em;
-      border-radius: 0.25em;
-    }
-    ul {
-      list-style-type: disc;
-      margin: 0;
-      padding: 0;
-    }
-    ul ul {
-      list-style-type: circle;
-      margin-left: 20px;
-    }
-
-    a {
-      color: #e11d48;
-      text-decoration: underline;
-    }
-  }
-</style>

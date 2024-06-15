@@ -1,1 +1,66 @@
 @layer reset, base, tokens, recipes, utilities;
+
+.markdown h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+.markdown h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+.markdown h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+.markdown h4 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+.markdown h5 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.markdown h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.markdown p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.markdown code {
+  padding: 0.1em 0.25em;
+  border-radius: 0.25em;
+}
+.markdown ul {
+  list-style-type: disc;
+  margin: 0;
+  padding: 0;
+}
+.markdown ul ul {
+  list-style-type: circle;
+  margin-left: 20px;
+}
+
+.markdown a {
+  color: #e11d48;
+  text-decoration: underline;
+}
+
+.markdown blockquote {
+  border-left: 4px solid #ccc;
+  padding: 0.2em 1em;
+  margin: 1em;
+}
+
+.markdown hr {
+  border: 0;
+  background-color: #ccc;
+  height: 2px;
+  margin: 1.5em 0;
+}

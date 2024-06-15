@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import "../../../index.css";
+import { css } from "../../../../styled-system/css";
+import PageHead from "../../../components/PageHead.astro";
+import SideBar from "../../../components/SideBar.astro";
+import PostsTemplate from "../../../components/PostsTemplate.astro";
+
+export const getStaticPaths = async () => {
+  const posts = (await getCollection("reports")).sort(
+    (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+  );
+
+  const tags: {
+    params: { tag: string };
+  }[] = [];
+
+  posts.forEach((post) => {
+    post.data.tags?.forEach((tag) => {
+      tags.push({
+        params: {
+          tag,
+        },
+      });
+    });
+  });
+
+  return tags;
+};
+
+const { tag } = Astro.params;
+
+const posts = (await getCollection("reports"))
+  .sort((a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate))
+  .filter((post) => post.data.tags?.includes(tag));
+---
+
+<Layout title={`タグ「${tag}」がつけられた活動報告`} path={`/reports`}>
+  <div class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
+    <PageHead>{`タグ「${tag}」がつけられた活動報告`}</PageHead>
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <PostsTemplate posts={posts} />
+      <SideBar />
+    </div>
+  </div>
+</Layout>

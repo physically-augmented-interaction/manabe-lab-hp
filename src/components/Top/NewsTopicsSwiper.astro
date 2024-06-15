@@ -4,6 +4,8 @@ import { css } from "../../../styled-system/css";
 import { getCollection } from "astro:content";
 import FormattedDate from "../FormattedDate.astro";
 
+import { MdOutlineCameraAlt } from "react-icons/md";
+
 const posts = (await getCollection("reports")).sort(
   (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
 );
@@ -37,15 +39,32 @@ const posts = (await getCollection("reports")).sort(
                   },
                 })}
               >
-                <img
-                  src={post.data.heroImage}
-                  alt={post.data.title}
-                  class={css({
-                    display: "block",
-                    width: "80%",
-                    maxWidth: "400px",
-                  })}
-                />
+                {post.data.heroImage ? (
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    class={css({
+                      display: "block",
+                      width: "80%",
+                      maxWidth: "400px",
+                    })}
+                  />
+                ) : (
+                  <div
+                    class={css({
+                      background: "#eee",
+                      display: "flex",
+                      gap: "1rem",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "80%",
+                      aspectRatio: "16/9",
+                    })}
+                  >
+                    <MdOutlineCameraAlt size={32} />
+                    <div>NO IMAGE</div>
+                  </div>
+                )}
                 <h4
                   class={css({
                     fontSize: "1.1rem",

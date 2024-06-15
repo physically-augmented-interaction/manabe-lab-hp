@@ -4,7 +4,6 @@ import PageHead from "../components/PageHead.astro";
 import SideBar from "../components/SideBar.astro";
 import "../index.css";
 import Layout from "../layouts/Layout.astro";
-import FormattedDate from "../components/FormattedDate.astro";
 ---
 
 <Layout title="" path="/searh">
@@ -137,38 +136,20 @@ import FormattedDate from "../components/FormattedDate.astro";
   );
 
   const url = new URL(location.href);
-  const tag = url.searchParams.get("tag");
-  const year = url.searchParams.get("year");
-  const search = url.searchParams.get("query");
+  const search = url.searchParams.get("query") || "";
 
   const pageTitle = document.getElementById("page-title") as HTMLHeadingElement;
 
-  if (tag) {
-    document.title = `${tag} ${document.title}`;
-    pageTitle.textContent = `タグ:「${tag}」がつけられた活動報告一覧`;
-  }
-  if (year) {
-    document.title = `${year}年 ${document.title}`;
-    pageTitle.textContent = `${year}年`;
-  }
   if (search) {
     document.title = `「${search}」の検索結果 ${document.title}`;
     pageTitle.textContent = `「${search}」の検索結果`;
   }
 
   const searchResults = posts.filter((post) => {
-    if (tag) {
-      return post.data.tags?.includes(tag);
-    }
-    if (year) {
-      return new Date(post.data.pubDate).getFullYear() === Number(year);
-    }
-    if (search) {
-      return (
-        post.data.title.includes(search) ||
-        (post.data.tags ?? []).join(" ").includes(search)
-      );
-    }
+    return (
+      post.data.title.includes(search) ||
+      (post.data.tags ?? []).join(" ").includes(search)
+    );
   });
 
   const searchResultsContainer = document.getElementById(

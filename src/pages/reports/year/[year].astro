@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import "../../../index.css";
+import { css } from "../../../../styled-system/css";
+import PageHead from "../../../components/PageHead.astro";
+import SideBar from "../../../components/SideBar.astro";
+import PostsTemplate from "../../../components/PostsTemplate.astro";
+
+export const getStaticPaths = async () => {
+  const posts = (await getCollection("reports")).sort(
+    (a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate),
+  );
+
+  return posts.map((post) => {
+    return {
+      params: {
+        year: new Date(post.data.pubDate).getFullYear().toString(),
+      },
+    };
+  });
+};
+
+const { year } = Astro.params;
+
+const posts = (await getCollection("reports"))
+  .sort((a, b) => Date.parse(b.data.pubDate) - Date.parse(a.data.pubDate))
+  .filter(
+    (post) => new Date(post.data.pubDate).getFullYear().toString() === year,
+  );
+---
+
+<Layout title={`${year}年の活動報告`} path={`/reports/${year}`}>
+  <div class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
+    <PageHead> {year}年の活動報告 </PageHead>
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <PostsTemplate posts={posts} />
+      <SideBar />
+    </div>
+  </div>
+</Layout>
