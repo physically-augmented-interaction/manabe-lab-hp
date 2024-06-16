@@ -1,2 +1,4 @@
 /src/env.d.ts
 /src/layouts/Layout.astro
+node_modules/
+dist/
