@@ -1,54 +1,146 @@
-# Astro Starter Kit: Blog
+# 真鍋研究室 HP
 
-```sh
-npm create astro@latest -- --template blog
+このリポジトリは、 https://pai.ise.shibaura-it.ac.jp/ のソースコードです。
+
+## フレームワーク・技術スタック
+
+- Node.js
+- TypeScript
+- [Astro](https://astro.build/)
+- [Panda CSS](https://panda-css.com/)
+
+## 環境構築
+
+ホームページの更新をするためにはまず環境構築が必要です。
+
+詳しくは[環境構築](./environment.md)を参照してください。
+
+## 更新した記事を公開する方法
+
+GitHubの`main`ブランチが更新されると、GitHub Actionsによって自動的にビルドが行われ、公開されます。
+適切なブランチを切り、変更をコミットし、プッシュし、プルリクエストを作成、マージすることで記事を更新することができます。
+またおすすめはしませんが、`main`ブランチに直接コミットすることも可能です。
+
+## ブログ（活動報告）の更新本方法
+
+記事は[マークダウン形式](https://qiita.com/tbpgr/items/989c6badefff69377da7)で記述します。
+`src/content/reports` 以下に `.mdx` ファイルを追加することで、ブログを更新することができます。
+また、画像を追加する場合は `src/content/reports/images` 以下に画像を追加し、`.mdx` ファイル内で読み込むことができます。
+
+### ブログのフォーマット
+
+```markdown
+---
+title: "記事のタイトル"
+description: "記事の概要"
+pubDate: "2024-06-07T12:00:00.000Z"　// 公開日時 日付はISO 8601形式で記述すること
+tags: ["学会発表", "学生報告", "研究成果"] // タグ(任意)
+heroImage: "./images/chi2024/1.jpg" // サムネイル画像(任意)
+updateDate: "2024-06-07T12:00:00.000Z" // 更新日時(任意)
+
+---
+
+ここに記事の内容をマークダウン形式で記述します。
+
+// 画像の読み込みは以下のように行います
+// 通常の画像読み込みよりも、最適化された画像を読み込むことができます
+
+import Image1 from "./images/event/1.jpg"
+
+<Image src={Image1} alt="event" />
+
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+### 画像の読み込みについて
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+画像は通常のマークダウン記法ではなく、MDX形式で行ってください。以下に手順を示します。
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+1. 画像を `src/content/reports/images` 以下に配置します。基本的には、記事のタイトルのフォルダを作成し、その中に画像を配置すると良いでしょう。
+  1. 例: `src/content/reports/images/chi2024/1.jpg`
+1. 画像を読み込むために、`.mdx` ファイル内で画像をインポートします。
+  1. 例: `import Image1 from "./images/chi2024/1.jpg"`
+1. 画像を表示するために、`<Image src={Image1} alt="event" />` のように記述します。
+  1. `src` には、インポートした画像を指定します。
+  1. import文からは1行以上間隔を空けないとエラーが出ることがあります。
 
-Features:
+## メンバーの更新方法
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+メンバーは `src/content/members` 以下の2つのTypeScriptファイルで管理されています。
 
-## 🚀 Project Structure
+### 現在所属中のメンバー
 
-Inside of your Astro project, you'll see the following folders and files:
+`src/content/members/enrolled.ts` には、現在所属中のメンバーが記述されています。
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```typescript
+export const enrolledMembers = [
+  {
+    grade: "学年or役職",
+    color: "背景色",
+    members: [ // 学年ごとに、この配列にメンバーを追加してください
+      {
+        name: "真鍋　宏幸",
+        altName: "Hiroyuki Manabe",
+        role: "芝浦工業大学 工学部 情報工学科 教授",
+        link: "http://pai.ise.shibaura-it.ac.jp/manabe.html",
+        image: "/member/manabe.webp",
+      },
+    ],
+  },
+  // 他のメンバー
+];
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 卒業生メンバー
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`src/content/members/graduates.ts` には、卒業生メンバーが記述されています。
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```typescript
+enum CareerPath { // 進路
+  GRADUATE = "内部進学",
+  EMPLOYMENT = "就職",
+  OTHER_UNIVERSITY = "他大進学",
+  WITHDRAWAL = "中退",
+}
 
-Any static assets, like images, can be placed in the `public/` directory.
+export const graduatedMembers: GraduatedMembersType[] = [
+  {
+    graduatedYear: 2023, // 卒業年
+    group: [
+      {
+        curriculum: Curriculum.MASTER, // 学位
+        members: [
+          {
+            name: "名前",
+            study: "研究内容",
+            careerPath: CareerPath.EMPLOYMENT, // 進路: 就職
+          },
+          {
+            name: "名前",
+            study:
+              "研究内容",
+            careerPath: CareerPath.GRADUATE, // 進路: 内部進学
+          },
+          // 他のメンバー
+        ],
+      },
+      {
+        curriculum: Curriculum.BACHELOR, // 学位
+        members: [
+          // 他のメンバー
+        ],
+      },
+    ],
+  },
+  // 他の年度の卒業生
+];
+```
 
-## 🧞 Commands
+## 研究内容・研究成果の更新方法
 
-All commands are run from the root of the project, from a terminal:
+研究内容・研究成果は `src/pages/study.mdx` および `src/content/result.tsx` の2つのファイルで管理されています。
+マークダウンを記述することで更新を行えます。
+
+##  Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -58,11 +150,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

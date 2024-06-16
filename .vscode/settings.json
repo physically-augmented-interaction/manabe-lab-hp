@@ -1,0 +1,7 @@
+{
+  "prettier.documentSelectors": ["**/*.astro"],
+  "editor.formatOnSave": true,
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
