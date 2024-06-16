@@ -4,7 +4,7 @@ path: /study
 title: 研究内容
 ---
 
-import Image from "../components/Image.astro";
+import { Image } from "astro:assets";
 
 ## 3Dプリンタと転写箔を用いた多層基板の製作手法
 
@@ -67,11 +67,17 @@ _岩井， 2020_
 > Hiroyuki Manabe, Yuki Iwai, “Backhand Display: A Wearable Device for the Back of the Hand,” Companion Proc. Conf. on Interactive Surfaces and Spaces (ISS ’20), pp. 41-45, 2020.
 > [https://dl.acm.org/doi/10.1145/3380867.3426200](https://dl.acm.org/doi/10.1145/3380867.3426200)
 
+import BackhandDisplayImage from "../assets/study/backhand_display.webp";
+
 <Image
-  src="/study/backhand_display.webp"
-  caption="Backhand displayのプロトタイプ"
-  width="90%"
+  src={BackhandDisplayImage}
+  alt="Backhand displayのプロトタイプ"
+  style={{
+    width: "90%",
+    margin: "0 auto",
+  }}
 />
+Backhand displayのプロトタイプ
 
 ---
 
@@ -106,4 +112,14 @@ FDM 方式の3D プリンタ, 金属転写箔, ボールキャスタを用いて
 > Yuhei Imai, Kunihiro Kato, Norihisa Segawa, Hiroyuki Manabe, “Hot Stamping of Electric Circuits by 3D Printer”, Adjunct Proc. Symp. User Interface Software and Technology (UIST ’19), pp. 128-130, 2019.
 > [https://doi.org/10.1145/3332167.3356895](https://doi.org/10.1145/3332167.3356895)
 
-<Image src="/study/imai2019.webp" caption="セットアップした状態" width="90%" />
+import Imai2019Image from "../assets/study/imai2019.webp";
+
+<Image
+  src={Imai2019Image}
+  alt="セットアップした状態"
+  style={{
+    width: "90%",
+    margin: "0 auto",
+  }}
+/>
+セットアップした状態

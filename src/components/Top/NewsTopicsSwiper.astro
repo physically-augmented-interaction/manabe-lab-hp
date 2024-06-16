@@ -1,5 +1,6 @@
 ---
 import { css } from "../../../styled-system/css";
+import { Image } from "astro:assets";
 
 import { getCollection } from "astro:content";
 import FormattedDate from "../FormattedDate.astro";
@@ -40,7 +41,7 @@ const posts = (await getCollection("reports")).sort(
                 })}
               >
                 {post.data.heroImage ? (
-                  <img
+                  <Image
                     src={post.data.heroImage}
                     alt={post.data.title}
                     class={css({

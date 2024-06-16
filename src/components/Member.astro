@@ -2,6 +2,7 @@
 import { css } from "../../styled-system/css";
 import { FiLink } from "react-icons/fi";
 import type { Member as MemberType } from "../types/member";
+import { Image } from "astro:assets";
 
 const {
   name,
@@ -22,7 +23,7 @@ const {
     overflow: "hidden",
   })}
 >
-  <img src={image} alt={name} width="200" />
+  <Image src={image} alt={name} width={200} height={200} />
   <div class={css({ padding: "0 .5rem 1rem .5rem", textAlign: "center" })}>
     <h3
       style={{ backgroundColor: color }}

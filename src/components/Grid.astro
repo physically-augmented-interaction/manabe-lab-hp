@@ -1,0 +1,15 @@
+---
+import { css } from "../../styled-system/css";
+---
+
+<div
+  class={css({
+    display: "grid",
+    justifyItems: "center",
+    alignItems: "center",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridGap: 3,
+  })}
+>
+  <slot />
+</div>

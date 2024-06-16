@@ -100,17 +100,6 @@ import Layout from "../layouts/Layout.astro";
             },
           })}
         >
-          <img
-            src=""
-            alt=""
-            class={css({
-              width: "45%",
-              maxWidth: "500px",
-              display: "none",
-              sm: { display: "block" },
-              lg: { maxWidth: "400px", width: "100%" },
-            })}
-          />
           <p
             class={css({
               fontSize: "1rem",
@@ -145,8 +134,13 @@ import Layout from "../layouts/Layout.astro";
 
   const searchResults = posts.filter((post) => {
     return (
-      post.data.title.includes(search) ||
-      (post.data.tags ?? []).join(" ").includes(search)
+      post.data.title
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase()) ||
+      (post.data.tags ?? [])
+        .join(" ")
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase())
     );
   });
 
@@ -171,7 +165,6 @@ import Layout from "../layouts/Layout.astro";
     const descriptions = result.querySelectorAll(
       ".description",
     ) as NodeListOf<HTMLParagraphElement>;
-    const img = result.querySelector("img") as HTMLImageElement;
     const a = result.querySelector("a") as HTMLAnchorElement;
 
     title.textContent = post.data.title;
@@ -181,12 +174,6 @@ import Layout from "../layouts/Layout.astro";
     descriptions.forEach((desc) => {
       desc.textContent = post.data.description;
     });
-    if (post.data.heroImage) {
-      img.src = post.data.heroImage;
-      img.alt = post.data.title;
-    } else {
-      img.remove();
-    }
     a.href = `/reports/${post.slug}/`;
 
     searchResultsContainer.appendChild(result);

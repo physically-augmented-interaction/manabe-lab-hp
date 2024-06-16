@@ -1,6 +1,7 @@
 ---
 import { css } from "../../styled-system/css";
 import FormattedDate from "./FormattedDate.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   posts: any[];
@@ -90,7 +91,7 @@ const { posts } = Astro.props;
               })}
             >
               {post.data.heroImage && (
-                <img
+                <Image
                   src={post.data.heroImage}
                   alt=""
                   class={css({

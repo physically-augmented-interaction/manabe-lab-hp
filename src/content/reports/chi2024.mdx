@@ -3,34 +3,40 @@ title: "CHI2024にてデモ発表を行いました（M1 櫻井・M1 武田）"
 description: "2024年5月11日から5月16日にアメリカのハワイ州オアフ島にあるHawai`i Convention Centerで開催されたCHI2024に，M1の櫻井瑛一朗と武田和大，B4の上樂大治朗が参加しました．"
 pubDate: "2024-06-07T12:00:00.000Z"
 tags: ["学会発表", "学生報告", "研究成果"]
-heroImage: "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240514_033633856-2.jpg"
+heroImage: "./images/chi2024/1.jpg"
 ---
-
-import ImageTile from "../../components/ImageTile.astro";
 
 M1の武田です．2024年5月11日から5月16日にアメリカのハワイ州オアフ島にある[Hawai\`i Convention Center](https://www.meethawaii.com/convention-center/)で開催されたCHI2024に，M1の櫻井瑛一朗と武田和大，B4の上樂大治朗が参加しました．
 
 発表では，数え切れないほど多くの方に来ていただきました．英語での発表は初めてで緊張していましたが，始まるととても楽しかったです．一緒に来てもらった上樂君にも発表を協力してもらいました．英語での説明は難しかったですが，また国際学会で発表したいと思いました．
 
-<ImageTile
-  srcList={[
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240514_033633856-2.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240514_034843045.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240515_011619126.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240515_012301913.jpg",
-  ]}
-/>
+import { Image } from "astro:assets";
+import Grid from "../../components/Grid.astro";
+import Image1 from "./images/chi2024/1.jpg";
+import Image2 from "./images/chi2024/2.jpeg";
+import Image3 from "./images/chi2024/3.jpeg";
+import Image4 from "./images/chi2024/4.jpeg";
+
+<Grid>
+  <Image src={Image1} alt="CHI2024" />
+  <Image src={Image2} alt="CHI2024" />
+  <Image src={Image3} alt="CHI2024" />
+  <Image src={Image4} alt="CHI2024" />
+</Grid>
 
 ハワイは日本より少し涼しく過ごしやすい気候でした．時々ゲリラ豪雨に遭いましたが，天気が良いときにたくさん観光することができました．
 
-<ImageTile
-  srcList={[
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/manabe-sleep.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240513_011547852.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/konoki-nannnoki.jpg",
-    "http://pai.ise.shibaura-it.ac.jp/wp-content/uploads/2024/06/PXL_20240517_053053005.jpg",
-  ]}
-/>
+import ManabeSleep from "./images/chi2024/manabe-sleep.jpg";
+import Image5 from "./images/chi2024/5.jpeg";
+import KonokiNannnoki from "./images/chi2024/konoki-nannnoki.jpg";
+import Dinner from "./images/chi2024/dinner.jpeg";
+
+<Grid>
+  <Image src={ManabeSleep} alt="Manabe Sleep" />
+  <Image src={Image5} alt="CHI2024" />
+  <Image src={KonokiNannnoki} alt="Konoki Nannnoki" />
+  <Image src={Dinner} alt="Dinner" />
+</Grid>
 
 ## 研究概要
 
