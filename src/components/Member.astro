@@ -19,25 +19,40 @@ const {
   class={css({
     color: "#fff",
     boxShadow: "0 0 6px #6666",
-    width: "200px",
+    width: "120px",
     overflow: "hidden",
+    md: { width: "200px" },
   })}
 >
-  <Image src={image} alt={name} width={200} height={200} />
+  <Image
+    src={image}
+    alt={name}
+    width={200}
+    height={200}
+    class={css({ width: "100%" })}
+  />
   <div class={css({ padding: "0 .5rem 1rem .5rem", textAlign: "center" })}>
     <h3
       style={{ backgroundColor: color }}
       class={css({
-        fontSize: "1.1rem",
+        fontSize: "0.8rem",
         fontWeight: "bold",
         margin: "0",
         padding: "0.5rem",
         color: "#fff",
+        md: { fontSize: "1.2rem" },
       })}
     >
       {altName ?? name}
     </h3>
-    <p class={css({ wordBreak: "keep-all", fontWeight: 700 })}>
+    <p
+      class={css({
+        wordBreak: "keep-all",
+        fontWeight: 700,
+        fontSize: "0.7rem",
+        md: { fontSize: "1rem" },
+      })}
+    >
       {role}
     </p>
     {

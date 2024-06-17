@@ -1,0 +1,67 @@
+---
+import { css } from "../../../styled-system/css";
+
+interface Props {
+  youtubeId?: string;
+  imgSrc?: any;
+}
+const { youtubeId, imgSrc } = Astro.props;
+---
+
+<div
+  class={css({
+    display: "grid",
+    alignItems: "center",
+    mb: "1rem",
+    gap: "10px",
+    gridTemplateColumns: "1fr",
+    sm: { gridTemplateColumns: "240px 1fr" },
+    lg: {
+      gridTemplateColumns: "300px 1fr",
+    },
+  })}
+>
+  <div
+    class={css({
+      mx: "auto",
+      width: "240px",
+      lg: {
+        width: "300px",
+      },
+    })}
+  >
+    {
+      youtubeId && (
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeId}`}
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          class={css({
+            width: "100%",
+            aspectRatio: "4/3",
+          })}
+        />
+      )
+    }
+    {
+      imgSrc && (
+        <img
+          src={imgSrc}
+          alt="placeholder"
+          class={css({
+            width: "100%",
+            height: "auto",
+          })}
+        />
+      )
+    }
+  </div>
+  <div
+    class={css({
+      textAlign: "center",
+      sm: { textAlign: "left", ml: "1rem" },
+      fontSize: "0.9rem",
+    })}
+  >
+    <slot />
+  </div>
+</div>

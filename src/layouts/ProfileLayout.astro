@@ -1,0 +1,12 @@
+---
+import "../index.css";
+import Profile from "../components/Profile/ProfileLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Profile pageIndex={Number(frontmatter.pageIndex)}>
+  <div class="markdown">
+    <slot />
+  </div>
+</Profile>

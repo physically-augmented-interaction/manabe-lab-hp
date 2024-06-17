@@ -1,0 +1,101 @@
+---
+import { css } from "../../../styled-system/css";
+import Layout from "../../layouts/Layout.astro";
+import SideBar from "../SideBar.astro";
+import ProfileHeader from "./ProfileHeader.astro";
+import ProfileSection from "./ProfileSection.astro";
+import PageHead from "../PageHead.astro";
+
+const profilePages = [
+  {
+    ja: "経歴ほか",
+    en: "Biography",
+    href: "/profile",
+  },
+  {
+    ja: "主な研究",
+    en: "Research",
+    href: "/profile/research",
+  },
+  {
+    ja: "研究業績",
+    en: "Research",
+    href: "/profile/publication",
+  },
+];
+
+interface Props {
+  pageIndex: number;
+}
+
+const { pageIndex } = Astro.props;
+---
+
+<Layout title="プロフィール" path="/profile">
+  <div
+    class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
+  >
+    <PageHead>教員プロフィール</PageHead>
+    <div
+      class={css({
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        xl: { flexDirection: "row" },
+      })}
+    >
+      <main class={css({ width: "100%", px: "1rem", md: { px: "2rem" } })}>
+        <ProfileHeader />
+        <div>
+          <ul
+            class={css({
+              my: "2rem",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              gap: "0.3rem",
+              lg: {
+                flexDirection: "row",
+                gap: "3rem",
+              },
+            })}
+          >
+            {
+              profilePages.map((page, idx) => (
+                <li>
+                  <a
+                    href={page.href}
+                    class={css({
+                      display: "block",
+                      width: "80%",
+                      mx: "auto",
+                      color: pageIndex === idx ? "#fff" : "#333",
+                      textDecoration: "none",
+                      fontSize: "1.1rem",
+                      padding: "0.5rem 2rem",
+                      transition: "color 0.3s, background-color 0.3s",
+                      backgroundColor: pageIndex === idx ? "#444" : "#ddd",
+                      "&:hover": {
+                        backgroundColor: pageIndex === idx ? "#222" : "#bbb",
+                      },
+                      lg: {
+                        width: "300px",
+                        textAlign: "center",
+                      },
+                    })}
+                  >
+                    {page.ja} / {page.en}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <section class="profile">
+          <slot />
+        </section>
+      </main>
+      <SideBar />
+    </div>
+  </div>
+</Layout>

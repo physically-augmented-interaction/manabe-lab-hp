@@ -19,16 +19,10 @@ const { frontmatter } = Astro.props;
         xl: { flexDirection: "row" },
       })}
     >
-      <main class="markdown">
+      <main class={css({ px: "1.5rem", md: { px: "3rem" } }) + " markdown"}>
         <slot />
       </main>
       <SideBar />
     </div>
   </div>
 </Layout>
-
-<style>
-  .markdown {
-    padding: 0 3rem;
-  }
-</style>

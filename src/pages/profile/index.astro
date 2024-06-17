@@ -1,0 +1,159 @@
+---
+import { css } from "../../../styled-system/css";
+import "../../index.css";
+import ProfileSection from "../../components/Profile/ProfileSection.astro";
+import Image from "astro/components/Image.astro";
+import MailImg from "../../assets/profile/mail.jpg";
+import ProfileLayout from "../../components/Profile/ProfileLayout.astro";
+---
+
+<ProfileLayout pageIndex={0}>
+  <section class="profile">
+    <ProfileSection title="略歴 / short biography">
+      <p>
+        1976年生．1999年東工大工学部卒．2001年同大大学院修士課程了．同年（株）NTT
+        ドコモ入社．
+        2019年より芝浦工業大学．2022年より同教授．ウェアラブル／ユビキタスコンピューティングの
+        ための入出力デバイス，生体信号を用いた入力インタフェースの研究等に従事．博士（工学）．
+      </p>
+      <p>
+        Hiroyuki Manabe was born in 1976. He received B.E., M.E., and Ph.D.
+        degree from Tokyo Inst. Tech. in 1999, 2001, and 2015, respectively. He
+        started his career at NTT DOCOMO as a research engineer in 2001, and
+        joined Shibaura Inst. Tech. in 2019 as an associate professor. Since
+        2022, he is a professor. His research interest includes
+        wearable/ubiquitous computing and input/output devices.
+      </p>
+    </ProfileSection>
+    <ProfileSection title="学歴 / education">
+      <div class="table">
+        <div>1983/4 - 1985/8</div>
+        <div>多摩市立貝取小学校</div>
+        <div>1985/8 - 1989/3</div>
+        <div>三鷹市立井口小学校</div>
+        <div>1989/4 - 1992/3</div>
+        <div>三鷹市立第二中学校</div>
+        <div>1992/4 - 1995/3</div>
+        <div>
+          筑波大学附属高等学校 / Senior High School at Otsuka, Univ. Tsukuba
+        </div>
+        <div>1995/4 - 1999/3</div>
+        <div>
+          <div>東京工業大学 工学部 電気電子工学科(5類)　学士（工学）</div>
+          <div>Electrical and Electronic Engineering, Tokyo Inst. Tech.</div>
+        </div>
+        <div>1999/4 - 2001/3</div>
+        <div>
+          <div>
+            東京工業大学 総合理工学研究科
+            物理情報システム創造専攻　修士（工学）/
+          </div>
+          <div>Information Processing, Tokyo Inst. Tech.</div>
+        </div>
+        <div>2012/4 - 2015/3</div>
+        <div>
+          <div>東京工業大学 情報理工学研究科 情報環境学専攻　博士（工学）/</div>
+          <div>Mechanical and Environmental Informatics, Tokyo Inst. Tech.</div>
+        </div>
+      </div>
+    </ProfileSection>
+    <ProfileSection title="職歴 / career">
+      <div class="table">
+        <div>2001/4 - 2019/3</div>
+        <div>株式会社 NTTドコモ / NTT DOCOMO, Inc.</div>
+        <div>2016/4 - 2018/9</div>
+        <div>
+          中央大学 理工学部　兼任講師 / Concurrent Lecturer in Chuo Univ.
+        </div>
+        <div>2019/4 - 2022/3</div>
+        <div>
+          芝浦工業大学 工学部 情報工学科　准教授 / Assoc. Prof. in Shibaura
+          Inst. Tech.
+        </div>
+        <div>2022/4 - 現在</div>
+        <div>
+          芝浦工業大学 工学部 情報工学科　教授 / Prof. in Shibaura Inst. Tech.
+        </div>
+      </div>
+    </ProfileSection>
+    <ProfileSection title="主な学会活動 / academic activities">
+      <div class="table">
+        <div>2009/4 - 2013/3</div>
+        <div>情報処理学会 学会誌編集委員（AWG主査含む）</div>
+        <div>2013/4 - 現在</div>
+        <div>情報処理学会 HCI研究会運営委員（運営幹事含む）</div>
+        <div>2015/2 - 2017/9</div>
+        <div>ISWC PC member</div>
+        <div>2015/7 - 2021/12</div>
+        <div>WISS PCおよび運営委員（実行委員長含む）</div>
+        <div>2016/6 - 2020/5</div>
+        <div>
+          情報処理学会 論文誌ジャーナル/JIP編集委員（ISグループ主査含む）
+        </div>
+        <div>2018/4 - 現在</div>
+        <div>インタラクション 実行委員</div>
+        <div>2020/4 - 2021/5</div>
+        <div>CHI2021 Local Arrangement Co-Chair</div>
+      </div>
+    </ProfileSection>
+    <ProfileSection title="コンタクト / contact">
+      <div class="table">
+        <div>メール / mail</div>
+        <div>
+          <Image src={MailImg} alt="mail" width="500px" />
+          <span class={css({ fontSize: "80%" })}>
+            （スパム防止のために画像にしています）
+          </span>
+        </div>
+        <div>住所 / address</div>
+        <div>
+          <div>〒135-8548</div>
+          <div>東京都江東区豊洲3-7-5 13M32</div>
+          <div
+            class={css({
+              color: "#444",
+              fontSize: "0.9rem",
+              mb: ".5rem",
+            })}
+          >
+            13M32, 3-7-5, Toyosu, Koto-ku, Tokyo
+          </div>
+          芝浦工大豊洲キャンパスへのアクセスは
+          <a
+            href="https://www.shibaura-it.ac.jp/access/toyosu.html"
+            target="_blank"
+          >
+            こちら
+          </a>
+        </div>
+      </div>
+    </ProfileSection>
+  </section>
+</ProfileLayout>
+
+<style>
+  .profile a {
+    color: #e11d48;
+    text-decoration: underline;
+  }
+  .table {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    row-gap: 0.3rem;
+    column-gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .table {
+      grid-template-columns: 1fr;
+    }
+    .table > div:nth-child(odd) {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .table > div:nth-child(even) {
+      padding-left: 0.5rem;
+    }
+  }
+</style>

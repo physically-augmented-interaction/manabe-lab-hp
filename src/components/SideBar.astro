@@ -17,9 +17,10 @@ const years: number[] = [
 
 <div
   class={css({
-    width: "80%",
+    width: "90%",
     mx: "auto",
     mt: "2rem",
+    mb: "1rem",
     pt: "2rem",
     borderTop: "1px solid #ddd",
     xl: {
@@ -34,84 +35,86 @@ const years: number[] = [
     },
   })}
 >
-  <SearchBox />
-  <div class={css({ mt: 4 })}>
-    <h4
-      class={css({
-        fontWeight: "bold",
-        width: "fit-content",
-        _after: {
-          content: "''",
-          display: "block",
-          width: "100%",
-          height: "2px",
-          backgroundColor: "#e96656",
-          marginTop: "0.5rem",
-        },
-      })}
-    >
-      最近の投稿
-    </h4>
-    <ul class={css({ listStyle: "square", pl: "1rem" })}>
-      {
-        displayPosts.map((post) => (
-          <li class={css({ mt: 4 })}>
-            <a
-              href={`/reports/${post.slug}/`}
-              class={css({
-                color: "inherit",
-                textDecoration: "none",
-                "&:hover": {
-                  textDecoration: "underline",
-                },
-              })}
-            >
-              <h5>{post.data.title}</h5>
-            </a>
-            <div class={css({ color: "#999", fontSize: "90%" })}>
-              <FormattedDate date={post.data.pubDate} />
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-  <div class={css({ mt: 4 })}>
-    <h4
-      class={css({
-        fontWeight: "bold",
-        width: "fit-content",
-        _after: {
-          content: "''",
-          display: "block",
-          width: "100%",
-          height: "2px",
-          backgroundColor: "#e96656",
-          marginTop: "0.5rem",
-        },
-      })}
-    >
-      アーカイブ
-    </h4>
-    <ul class={css({ listStyle: "none", pl: 0 })}>
-      {
-        years.map((year) => (
-          <li class={css({ mt: 2 })}>
-            <a
-              href={`/reports/year/${year}`}
-              class={css({
-                color: "inherit",
-                textDecoration: "none",
-                "&:hover": {
-                  textDecoration: "underline",
-                },
-              })}
-            >
-              {year}年
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  <div class={css({ width: "95%", mx: "auto", xl: { width: "100%" } })}>
+    <SearchBox />
+    <div class={css({ mt: 4 })}>
+      <h4
+        class={css({
+          fontWeight: "bold",
+          width: "fit-content",
+          _after: {
+            content: "''",
+            display: "block",
+            width: "100%",
+            height: "2px",
+            backgroundColor: "#e96656",
+            marginTop: "0.5rem",
+          },
+        })}
+      >
+        最近の投稿
+      </h4>
+      <ul class={css({ listStyle: "square", pl: "1rem" })}>
+        {
+          displayPosts.map((post) => (
+            <li class={css({ mt: 4 })}>
+              <a
+                href={`/reports/${post.slug}/`}
+                class={css({
+                  color: "inherit",
+                  textDecoration: "none",
+                  "&:hover": {
+                    textDecoration: "underline",
+                  },
+                })}
+              >
+                <h5>{post.data.title}</h5>
+              </a>
+              <div class={css({ color: "#999", fontSize: "90%" })}>
+                <FormattedDate date={post.data.pubDate} />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class={css({ mt: 4 })}>
+      <h4
+        class={css({
+          fontWeight: "bold",
+          width: "fit-content",
+          _after: {
+            content: "''",
+            display: "block",
+            width: "100%",
+            height: "2px",
+            backgroundColor: "#e96656",
+            marginTop: "0.5rem",
+          },
+        })}
+      >
+        アーカイブ
+      </h4>
+      <ul class={css({ listStyle: "none", pl: 0 })}>
+        {
+          years.map((year) => (
+            <li class={css({ mt: 2 })}>
+              <a
+                href={`/reports/year/${year}`}
+                class={css({
+                  color: "inherit",
+                  textDecoration: "none",
+                  "&:hover": {
+                    textDecoration: "underline",
+                  },
+                })}
+              >
+                {year}年
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </div>

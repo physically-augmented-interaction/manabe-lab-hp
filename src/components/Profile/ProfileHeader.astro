@@ -1,0 +1,69 @@
+---
+import { css } from "../../../styled-system/css";
+import Image from "astro/components/Image.astro";
+import ManabeImage from "../../assets/profile/manabe.jpg";
+import "@fontsource/kosugi";
+import "@fontsource-variable/raleway";
+---
+
+<div
+  class={css({
+    px: "1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "1rem",
+    mt: "1rem",
+    flexDirection: "column",
+    md: { flexDirection: "row", gap: "3rem", mt: "0" },
+  })}
+>
+  <Image
+    src={ManabeImage}
+    alt="教員の写真"
+    class={css({
+      maxWidth: "160px",
+      md: { maxWidth: "130px" },
+    })}
+  />
+  <div class={css({ textAlign: "center" })}>
+    <h2
+      class={css({
+        fontSize: "3rem",
+        letterSpacing: "0.02em",
+        fontFamily: "Kosugi, sans-serif",
+        lineHeight: "1.1",
+      })}
+    >
+      真鍋 宏幸
+    </h2>
+    <h3
+      class={css({
+        fontSize: "1.6rem",
+        fontFamily: "'Raleway Variable', sans-serif",
+        _after: {
+          content: "''",
+          display: "block",
+          width: "100%",
+          height: "2px",
+          backgroundColor: "#e96656",
+          marginTop: "0.2rem",
+        },
+      })}
+    >
+      Hiroyuki Manabe
+    </h3>
+    <div
+      class={css({
+        mt: "1rem",
+        fontSize: "0.9rem",
+        letterSpacing: "0.02em",
+        fontFamily: "'Raleway Variable', sans-serif",
+        px: "5rem",
+      })}
+    >
+      <h3>芝浦工業大学 工学部 教授</h3>
+      <h3>博士 (工学) / Ph.D.</h3>
+    </div>
+  </div>
+</div>

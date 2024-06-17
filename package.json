@@ -19,6 +19,8 @@
     "@fontsource-variable/afacad": "^5.0.3",
     "@fontsource-variable/montserrat": "^5.0.19",
     "@fontsource-variable/noto-sans-jp": "^5.0.19",
+    "@fontsource-variable/raleway": "^5.0.20",
+    "@fontsource/kosugi": "^5.0.19",
     "@fontsource/zen-kaku-gothic-antique": "^5.0.19",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

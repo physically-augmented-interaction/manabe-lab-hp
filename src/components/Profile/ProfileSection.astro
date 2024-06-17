@@ -1,0 +1,39 @@
+---
+import { css } from "../../../styled-system/css";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<div class={css({ my: "1rem" })}>
+  <h2
+    class={css({
+      display: "block",
+      fontWeight: "bold",
+      fontSize: "1.2rem !important",
+      padding: "0.2rem 1rem",
+      background: "linear-gradient(to right, #dbe1ff 0%, #f6f8ff 100%)",
+      wordBreak: "break-word",
+      md: {
+        padding: "0.2rem 2rem",
+      },
+    })}
+  >
+    {title}
+  </h2>
+  <div
+    class={css({
+      padding: "1rem 0.5rem",
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.5rem",
+      md: {
+        padding: "1rem 2rem",
+      },
+    })}
+  >
+    <slot />
+  </div>
+</div>
