@@ -64,3 +64,10 @@
   height: 2px;
   margin: 1.5em 0;
 }
+
+span.mnb {
+  text-decoration: underline;
+}
+span.award {
+  color: red;
+}
