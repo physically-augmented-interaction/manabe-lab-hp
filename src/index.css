@@ -42,6 +42,11 @@
   margin: 0;
   padding: 0;
 }
+.markdown ol {
+  list-style-type: decimal;
+  margin: 0;
+  padding: 0;
+}
 .markdown ul ul {
   list-style-type: circle;
   margin-left: 20px;
