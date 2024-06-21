@@ -140,6 +140,13 @@ export const graduatedMembers: GraduatedMembersType[] = [
 研究内容・研究成果は `src/pages/study.mdx` および `src/content/result.tsx` の2つのファイルで管理されています。
 マークダウンを記述することで更新を行えます。
 
+## 真部先生のプロフィールの更新方法
+
+真部先生のプロフィールは `src/pages/profile` 内のファイルで管理されています。
+- `src/pages/profile/index.astro` : 「経歴ほか」をastro形式で記述。HTMLタグを使うことができます。
+- `src/pages/profile/research.mdx` : 「主な研究」をMDX形式で記述。マークダウンおよびHTMLタグを使うことができます。
+- `src/pages/profile/publication.mdx` : 「研究業績」をMDX形式で記述。マークダウンおよびHTMLタグを使うことができます。
+
 ##  Commands
 
 | Command                   | Action                                           |
