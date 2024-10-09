@@ -80,7 +80,7 @@ export const enrolledMembers = [
       {
         name: "真鍋　宏幸",
         altName: "Hiroyuki Manabe",
-        role: "芝浦工業大学 工学部 情報工学科 教授",
+        role: "芝浦工業大学 工学部 教授",
         link: "http://pai.ise.shibaura-it.ac.jp/manabe.html",
         image: "/member/manabe.webp",
       },
