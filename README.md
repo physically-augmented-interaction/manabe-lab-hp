@@ -1,6 +1,6 @@
 # 真鍋研究室 HP
 
-このリポジトリは、 https://pai.ise.shibaura-it.ac.jp/ のソースコードです。
+このリポジトリは、 https://pai.eng.shibaura-it.ac.jp/ のソースコードです。
 
 ## フレームワーク・技術スタック
 
@@ -81,7 +81,7 @@ export const enrolledMembers = [
         name: "真鍋　宏幸",
         altName: "Hiroyuki Manabe",
         role: "芝浦工業大学 工学部 教授",
-        link: "http://pai.ise.shibaura-it.ac.jp/manabe.html",
+        link: "https://pai.eng.shibaura-it.ac.jp/profile/",
         image: "/member/manabe.webp",
       },
     ],
