@@ -1,9 +1,6 @@
 name: ci-for-pull-request
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 concurrency:
   cancel-in-progress: true
