@@ -1,0 +1,47 @@
+---
+title: "UIST2024でデモ発表を行いました（B4𠮷岡）"
+description: "2024年10月13日から10月16日にかけてアメリカ合衆国のペンシルベニア州ピッツバーグにて開催されたUIST2024(The ACM Symposium on User Interface Software and Technology 2024)でB4の𠮷岡がデモ発表を行いました．"
+pubDate: "2024-11-05T12:00:00.000Z"
+tags: ['学生報告', '研究成果']
+heroImage: "./images/post-2024-11-05-02/1.jpg"
+---
+import { Image } from "astro:assets";
+import Grid from "../../components/Grid.astro";
+
+import Image2 from './images/post-2024-11-05-02/2.jpg';
+import Image3 from './images/post-2024-11-05-02/3.jpg';
+import Image4 from './images/post-2024-11-05-02/4.jpg';
+import Image5 from './images/post-2024-11-05-02/5.jpg';
+
+
+B4の𠮷岡です．
+私は2024年10月13日から10月16日にかけてアメリカ合衆国ペンシルベニア州ピッツバーグで開催されたUIST2024にて，「SealingLid: FDM 3D Printing Technique that Bends Thin Walls to Work as a Lid」という題目でデモ発表を行いました．
+<Grid>
+<Image alt="img" src={Image2} />
+</Grid>
+
+学会2日目に行われた発表では、3Dプリンタを用いた手法の実演と，作成したアプリケーションを用いてデモを実施しました．
+私にとって初めての学会発表であり，英語での発表ということもあり，非常に緊張しました．発表直前にトラブルが発生したものの，臨機応変に対応し，無事に発表を終えることができました．
+<Grid>
+<Image alt="img" src={Image3} />
+<Image alt="img" src={Image4} />
+</Grid>
+
+## 観光
+滞在中，カーネギーメロン大学(CMU)やカーネギー自然史博物館などを訪問しました．
+大学の購買が休日のため閉店していたことは残念でしたが，ピッツバーグの街並みや，様々な芸術作品に触れ，とても楽しむことが出来ました．
+<Grid>
+<Image alt="img" src={Image5} />
+</Grid>
+初めての学会発表ということで，不慣れな部分も多く反省点もありましたが，大変貴重な経験となりました．
+普段関わることのない様々な人との交流は，とても新鮮な体験でした．今回の発表で得られた経験を活かし，これからも精力的に研究を行います．
+
+
+# 研究概要
+## SealingLid: FDM 3D Printing Technique that Bends Thin Walls to Work as a Lid（𠮷岡）
+3Dプリンターは実際の3Dオブジェクトをデザインし，作成することを可能にすることで，ユーザーの創造性を刺激する．
+しかし，残念なことに3Dプリンターは印刷に長時間を要し，多くの材料を浪費するという問題が存在する．
+このような問題を解決するために，モデルの修正やプリントプロセス中のユーザーの介入など，様々な手法が提案されている．
+この問題に対し本論文は，薄い壁を作り，プリンターのヘッドで倒すことで蓋を形成する手法であるSealingLidを提案する．
+これは，モデルの修正やユーザーの介入を必要とせず，未改造のFDM 3Dプリンターで動作する．
+実験では，インフィルとサポート構造に使用する材料と印刷時間を削減できることが示された．
