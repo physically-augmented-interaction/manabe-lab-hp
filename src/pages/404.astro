@@ -1,0 +1,61 @@
+---
+import { css } from "../../styled-system/css";
+import "../index.css";
+import "@fontsource/zen-kaku-gothic-antique";
+import "@fontsource-variable/montserrat";
+import Layout from "../layouts/Layout.astro";
+import TopLogo from "../components/TopLogo.astro";
+import AboutUsSection from "../components/Top/AboutUs.astro";
+import LatestNewsSection from "../components/Top/LatestNews.astro";
+---
+
+<Layout title="実世界インタラクション研究室" path="/404">
+  <div class={css({
+    display: "flex",
+    width: "100%",
+    height: "calc(100svh - 130px)",
+    margin: "0",
+    padding: "0",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  })}>
+    <h1 class={css({
+      fontSize: "72px",
+      fontWeight: "bold",
+      lineHeight: "1",
+    })}>
+      404
+    </h1>
+    <h2 class={css({
+      fontSize: "26px",
+      fontWeight: "bold",
+    })}>
+      Not Found
+    </h2>
+    <div class={css({
+      fontSize: "18px",
+      textAlign: "center",
+      mt: 8,
+    })}>
+      <p>
+        お探しのページが見つかりませんでした。
+      </p>
+    </div>
+    <p class={css({
+      mt: 4,
+      fontSize: "18px",
+    })}>
+      <a href="/" class={css({
+        color: "#e96656",
+        fontWeight: "bold",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "underline",
+        },
+      })}>
+        トップページに戻る
+      </a>
+    </p>
+  </div>
+</Layout>
