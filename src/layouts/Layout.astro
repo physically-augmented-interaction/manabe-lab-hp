@@ -1,26 +1,11 @@
 ---
-import NarrowHeader from "../components/NarrowHeader.astro";
-import WideHeader from "../components/WideHeader.astro";
-import { css } from "../../styled-system/css";
 import "@fontsource-variable/noto-sans-jp";
+import LayoutBody from "./LayoutBody.astro";
 interface Props {
   title: string;
   path: string;
 }
 const { title, path } = Astro.props;
-
-const links = [
-  { label: "Top", path: "/" },
-  { label: "研究内容", path: "/study" },
-  { label: "研究成果", path: "/result" },
-  { label: "教員プロフィール", path: "/profile" },
-  { label: "メンバー", path: "/members" },
-  { label: "活動報告", path: "/reports" },
-  {
-    label: "学内ページ",
-    path: "https://sites.google.com/shibaura-it.ac.jp/manabe-intra/",
-  },
-];
 ---
 
 <!doctype html>
@@ -32,10 +17,16 @@ const links = [
       content="大型の汎用機、PC、そしてスマートフォン。コンピュータはその形を大きく変えてながら、私たちの生活を便利で豊かなものとしてきました。今後、コンピュータは生活の中にますます溶け込んでき、常に膨大な情報を扱えるようになっていきます。私たちはそのような未来に向けて、人とコンピュータあるいは人と情報の関係を考え、そこで必要となる方式やデバイスを、もの作りを通して実証し、新たな体験を生み出していきます。"
     />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="芝浦工業大学 工学部 実世界インタラクション研究室" />
+    <meta
+      property="og:description"
+      content="芝浦工業大学 工学部 実世界インタラクション研究室"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://pai.eng.shibaura-it.ac.jp" />
-    <meta property="og:image" content="https://pai.eng.shibaura-it.ac.jp/ogp.jpg" />
+    <meta
+      property="og:image"
+      content="https://pai.eng.shibaura-it.ac.jp/ogp.jpg"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -45,39 +36,9 @@ const links = [
       content="_hycogv11tb4ZSjSPQdAp1TJ_H0n42r43ViLtRjePzA"
     />
   </head>
-  <body class={css({ margin: 0, fontFamily: "Noto Sans JP" })}>
-    <WideHeader nowPath={path} links={links} />
-    <NarrowHeader nowPath={path} links={links} />
+  <LayoutBody path={path}>
     <slot />
-    <footer
-      class={css({
-        textAlign: "center",
-        px: 4,
-        py: 6,
-        width: "100%",
-        bgColor: "#272727",
-        color: "#939393",
-      })}
-    >
-      <p>東京都江東区豊洲3-7-5 研究棟 13M32</p>
-    </footer>
+  </LayoutBody>
 
-    <style is:global>
-      html {
-        font-family: system-ui, sans-serif;
-        background-size: 224px;
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
-    </style>
-  </body>
+
 </html>

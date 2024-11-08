@@ -1,9 +1,9 @@
 ---
 import { css } from "../../../styled-system/css";
-import Layout from "../../layouts/Layout.astro";
 import SideBar from "../SideBar.astro";
 import ProfileHeader from "./ProfileHeader.astro";
 import PageHead from "../PageHead.astro";
+import LayoutBody from "../../layouts/LayoutBody.astro";
 
 const profilePages = [
   {
@@ -30,71 +30,106 @@ interface Props {
 const { pageIndex } = Astro.props;
 ---
 
-<Layout title="プロフィール" path="/profile">
-  <div
-    class={css({ paddingBottom: "2rem", maxWidth: "1400px", margin: "0 auto" })}
-  >
-    <PageHead>教員プロフィール</PageHead>
+<!doctype html>
+<html lang="ja">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="芝浦工業大学 工学部 情報・通信工学課程 情報工学コース 教授． ウェアラブル／ユビキタスコンピューティングの ための入出力デバイス，生体信号を用いた入力インタフェースの研究等に従事．"
+    />
+    <meta property="og:title" content="真鍋 宏幸 / Hiroyuki Manabe" />
+    <meta
+      property="og:description"
+      content="芝浦工業大学 工学部教授 真鍋宏幸"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pai.eng.shibaura-it.ac.jp" />
+    <meta
+      property="og:image"
+      content="https://pai.eng.shibaura-it.ac.jp/ogp_manabe.jpg"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>真鍋 宏幸 / Hiroyuki Manabe</title>
+    <meta
+      name="google-site-verification"
+      content="_hycogv11tb4ZSjSPQdAp1TJ_H0n42r43ViLtRjePzA"
+    />
+  </head>
+  <LayoutBody path="/profile">
     <div
       class={css({
-        display: "flex",
-        justifyContent: "space-between",
-        flexDirection: "column",
-        xl: { flexDirection: "row" },
+        paddingBottom: "2rem",
+        maxWidth: "1400px",
+        margin: "0 auto",
       })}
     >
-      <main class={css({ width: "100%", px: "1rem", md: { px: "2rem" } })}>
-        <ProfileHeader />
-        <div>
-          <ul
-            class={css({
-              my: "2rem",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "0.3rem",
-              lg: {
-                flexDirection: "row",
-                gap: "3rem",
-              },
-            })}
-          >
-            {
-              profilePages.map((page, idx) => (
-                <li>
-                  <a
-                    href={page.href}
-                    class={css({
-                      display: "block",
-                      width: "80%",
-                      mx: "auto",
-                      color: pageIndex === idx ? "#fff" : "#333",
-                      textDecoration: "none",
-                      fontSize: "1.1rem",
-                      padding: "0.5rem 2rem",
-                      transition: "color 0.3s, background-color 0.3s",
-                      backgroundColor: pageIndex === idx ? "#444" : "#ddd",
-                      "&:hover": {
-                        backgroundColor: pageIndex === idx ? "#222" : "#bbb",
-                      },
-                      lg: {
-                        width: "300px",
-                        textAlign: "center",
-                      },
-                    })}
-                  >
-                    {page.ja} / {page.en}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <section class="profile">
-          <slot />
-        </section>
-      </main>
-      <SideBar />
+      <PageHead>教員プロフィール</PageHead>
+      <div
+        class={css({
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: "column",
+          xl: { flexDirection: "row" },
+        })}
+      >
+        <main class={css({ width: "100%", px: "1rem", md: { px: "2rem" } })}>
+          <ProfileHeader />
+          <div>
+            <ul
+              class={css({
+                my: "2rem",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "0.3rem",
+                lg: {
+                  flexDirection: "row",
+                  gap: "3rem",
+                },
+              })}
+            >
+              {
+                profilePages.map((page, idx) => (
+                  <li>
+                    <a
+                      href={page.href}
+                      class={css({
+                        display: "block",
+                        width: "80%",
+                        mx: "auto",
+                        color: pageIndex === idx ? "#fff" : "#333",
+                        textDecoration: "none",
+                        fontSize: "1.1rem",
+                        padding: "0.5rem 2rem",
+                        transition: "color 0.3s, background-color 0.3s",
+                        backgroundColor: pageIndex === idx ? "#444" : "#ddd",
+                        "&:hover": {
+                          backgroundColor: pageIndex === idx ? "#222" : "#bbb",
+                        },
+                        lg: {
+                          width: "300px",
+                          textAlign: "center",
+                        },
+                      })}
+                    >
+                      {page.ja} / {page.en}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <section class="profile">
+            <slot />
+          </section>
+        </main>
+        <SideBar />
+      </div>
     </div>
-  </div>
-</Layout>
+  </LayoutBody>
+
+
+</html>
