@@ -27,6 +27,16 @@ const { title, path } = Astro.props;
       property="og:image"
       content="https://pai.eng.shibaura-it.ac.jp/ogp.jpg"
     />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} - ManabeLab`} />
+    <meta
+      name="twitter:description"
+      content="芝浦工業大学 工学部 実世界インタラクション研究室"
+    />
+    <meta
+      name="twitter:image"
+      content="https://pai.eng.shibaura-it.ac.jp/ogp.jpg"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
