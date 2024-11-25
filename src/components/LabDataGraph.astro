@@ -95,6 +95,23 @@ import "../index.css";
         }
       </div>
     </div>
+    <button
+      class={css({
+        backgroundColor: "black",
+        color: "white",
+        padding: "0.5rem 1rem",
+        borderRadius: "0.5rem",
+        border: "none",
+        cursor: "pointer",
+        transition: "all 0.3s",
+        "&:hover": {
+          backgroundColor: "#333",
+        },
+      })}
+      id="change-width"
+    >
+      グラフ幅の変更
+    </button>
     <div
       id="container"
       class={css({
@@ -104,7 +121,7 @@ import "../index.css";
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "min(60vh, 80vw)",
+        height: "min(60vh, 70vw)",
       })}
     >
       Loading...
@@ -115,6 +132,7 @@ import "../index.css";
 <script>
   import Highcharts, { type Options } from "highcharts";
   import { format } from "date-fns-tz";
+  let graphWidth = 12;
 
   type DataType = {
     time: string;
@@ -214,6 +232,10 @@ import "../index.css";
   const renderChart = (data: DataType[]): void => {
     Highcharts.chart("container", {
       ...chartOptions,
+      title: {
+        text: `過去${graphWidth}時間の環境データ`,
+        align: "center",
+      },
       xAxis: {
         categories: data.map((d) => d.time),
         title: {
@@ -261,7 +283,7 @@ import "../index.css";
         "https://script.googleusercontent.com/a/macros/shibaura-it.ac.jp/echo?user_content_key=sTi6ZA7LfLQHwhORyKbCYgIdcHM2tN3gGfTL8-TIH6HT2N-uRKTJLUBKfbctSQ431mn6ADle-fQhm1w3dHusUNwYKz-Klc4kOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKDOg-_jwvv1qVk8iAwux5u_ho89uN76N-s_qqbqbvHktnF2Z97WxeaHPRrjG0r_QmHM2MKyqdqz-Ye2uJOWuIIPw0aBpngFx3r9EteheGPNm7RO-mKWJsyuUXpbWg8ZRoxcy6pr-Oj0FQ&lib=M0ZTSKvy-Bs_DKGsO855ueb45LLkIKNRq",
       );
       const rawData = (await response.json()) as DataType[];
-      const data: DataType[] = rawData.slice(-720).map((d) => ({
+      const data: DataType[] = rawData.slice(-60 * graphWidth).map((d) => ({
         ...d,
         time: format(new Date(d.time), "HH:mm"),
       }));
@@ -282,4 +304,16 @@ import "../index.css";
 
   setInterval(fetchData, 3 * 60 * 1000);
   fetchData();
+
+  document
+    .getElementById("change-width")!
+    .addEventListener("click", async () => {
+      graphWidth = graphWidth === 6 ? 48 : graphWidth / 2;
+      (document.getElementById("change-width") as HTMLButtonElement)!.disabled =
+        true;
+      document.getElementById("container")!.innerHTML = "Loading...";
+      await fetchData();
+      (document.getElementById("change-width") as HTMLButtonElement)!.disabled =
+        false;
+    });
 </script>
