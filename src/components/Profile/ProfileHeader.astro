@@ -59,11 +59,26 @@ import "@fontsource-variable/raleway";
         fontSize: "0.9rem",
         letterSpacing: "0.02em",
         fontFamily: "'Raleway Variable', sans-serif",
-        px: "5rem",
+        md: { px: "5rem" },
       })}
     >
       <h3>芝浦工業大学 工学部 教授</h3>
-      <h3>博士 (工学) / Ph.D.</h3>
+      <h3>情報・通信工学課程 情報工学コース</h3>
+      <h3 class={css({ display: "flex", justifyContent: "center", gap: 3 })}>
+        <span>博士 (工学) / Ph.D.</span>
+        <span>
+          <a
+            href="https://scholar.google.co.jp/citations?user=HdGFv2cAAAAJ"
+            class={css({
+              color: "#e11d48",
+              textDecoration: "underline",
+              _hover: {
+                cursor: "pointer",
+              },
+            })}>Google Scholar</a
+          >
+        </span>
+      </h3>
     </div>
   </div>
 </div>
