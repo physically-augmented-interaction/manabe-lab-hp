@@ -81,6 +81,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
         image: "/member/yageta.webp",
       },
       { name: "YU SHUKYO", altName: "YU SHUKYO" },
+      { name: "RYU　SUIGEN", altName: "RYU　SUIGEN" },
     ],
   },
   {
@@ -113,8 +114,33 @@ export const enrolledMembers: EnrolledMembersType[] = [
     ],
   },
   {
+    grade: Grade.B3,
+    color: "#d23fdb",
+    members: [
+      {
+        name: "YUMA AIUCHI",
+        altName: "YUMA AIUCHI",
+        image: "/member/aiuchi.webp",
+      },
+      { name: "佐藤 翼", altName: "佐藤 翼" },
+      {
+        name: "YOTA MAKINO",
+        altName: "YOTA MAKINO",
+        image: "/member/makino.webp",
+      },
+      { name: "KOUSHIN FUKUDA", altName: "KOUSHIN FUKUDA" },
+      { name: "JIN OKII", altName: "JIN OKII" },
+      { name: "RYOMA OKI", altName: "RYOMA OKI" },
+      { name: "長島 匠吾", altName: "長島 匠吾" },
+      { name: "森岡 つおい", altName: "森岡 つおい" },
+      { name: "渡邉 智暁", altName: "渡邉 智暁" },
+      { name: "HONOKA INADA", altName: "HONOKA INADA" },
+
+    ],
+  },
+  {
     grade: Grade.ResearchStudents,
     color: "#737373",
-    members: [{ name: "RYU　SUIGEN", altName: "RYU　SUIGEN" }],
+    members: [],
   },
 ];
