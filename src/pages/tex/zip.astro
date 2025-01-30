@@ -9,8 +9,20 @@ import { TexZip } from "../../components/tool/texZip";
 <Layout title="実世界インタラクション研究室" path="/tex">
   <main class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
     <PageHead>BiB TeX圧縮ツール</PageHead>
-
-    <div>
+    <a
+      href="/tex"
+      class={css({
+        color: "{colors.rose.900}",
+        gap: ".2rem",
+        borderBottom: "1px solid",
+        width: "fit-content",
+        margin: ".3rem auto 0",
+        "&:hover": {
+          color: "{colors.rose.500}",
+        },
+      })}>一覧に戻る</a
+    >
+    <div class={css({ padding: "40px 10px", mb: "2rem" })}>
       <TexZip client:load />
     </div>
   </main>

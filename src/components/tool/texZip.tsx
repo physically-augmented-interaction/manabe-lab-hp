@@ -1,5 +1,5 @@
 import { css } from "../../../styled-system/css";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 
 export const TexZip = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -134,6 +134,8 @@ export const TexZip = () => {
       .join("\n\n");
   };
 
+  const [copyStatus, setCopyStatus] = useState<"default" | "copied">("default");
+
   const handlePaste = useCallback(() => {
     const textArea = textAreaRef.current;
     const resultArea = resultRef.current;
@@ -169,12 +171,12 @@ export const TexZip = () => {
   }, [handlePaste]);
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <textarea
         ref={textAreaRef}
         className={css({
           width: "100%",
-          height: "100px",
+          height: "250px",
           padding: "10px",
           fontSize: "16px",
           borderRadius: "5px",
@@ -210,22 +212,63 @@ export const TexZip = () => {
       >
         圧縮！
       </button>
-      <pre
-        ref={resultRef}
-        className={css({
-          marginTop: "20px",
-          padding: "15px",
-          backgroundColor: "#f5f5f5",
-          borderRadius: "5px",
-          border: "1px solid #ddd",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
-          fontSize: "14px",
-          lineHeight: "1.5",
-          maxHeight: "400px",
-          overflowY: "auto",
-        })}
-      ></pre>
+      <div className={css({ position: "relative" })}>
+        <pre
+          ref={resultRef}
+          className={css({
+            marginTop: "20px",
+            padding: "15px",
+            backgroundColor: "#f5f5f5",
+            borderRadius: "5px",
+            border: "1px solid #ddd",
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
+            fontSize: "14px",
+            lineHeight: "1.5",
+            maxHeight: "400px",
+            overflowY: "auto",
+            minHeight: "70px",
+          })}
+        ></pre>
+        <button
+          className={css({
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            padding: "10px 20px",
+            borderRadius: "4px",
+            backgroundColor: copyStatus === "copied" ? "#4CAF50" : "#BE3144",
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontWeight: "bold",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+            transition: "all 0.3s",
+            "&:hover": {
+              backgroundColor: copyStatus === "copied" ? "#45a049" : "#A5273F",
+              transform: "translateY(-1px)",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
+            },
+            "&:active": {
+              transform: "translateY(1px)",
+              boxShadow: "none",
+            },
+          })}
+          onClick={() => {
+            if (resultRef.current?.textContent) {
+              navigator.clipboard
+                .writeText(resultRef.current.textContent)
+                .then(() => {
+                  setCopyStatus("copied");
+                  setTimeout(() => setCopyStatus("default"), 2000);
+                });
+            }
+          }}
+        >
+          {copyStatus === "copied" ? "コピーしました！" : "コピー"}
+        </button>
+      </div>
     </div>
   );
 };
