@@ -52,8 +52,16 @@ import PageHead from "../../components/PageHead.astro";
         </p>
       </div>
       <div>
-        <h2 class={css({ fontSize: "1.5rem", fontWeight: "bold" })}>
-          引用タイトル小文字化防止ツール
+        <h2
+          class={css({
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            color: "{colors.rose.800}",
+            textDecoration: "underline",
+            "&:hover": { color: "{colors.rose.600}" },
+          })}
+        >
+          <a href="/tex/title">引用タイトル小文字化防止ツール </a>
         </h2>
         <p class={css({ p: "1rem .5rem" })}>
           BiB

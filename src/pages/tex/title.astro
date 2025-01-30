@@ -1,0 +1,29 @@
+---
+import { css } from "../../../styled-system/css";
+import "../../index.css";
+import Layout from "../../layouts/Layout.astro";
+import PageHead from "../../components/PageHead.astro";
+import { TexTitleRaw } from "../../components/tool/texTitleRaw";
+---
+
+<Layout title="実世界インタラクション研究室" path="/tex">
+  <main class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
+    <PageHead>引用タイトル小文字化防止ツール</PageHead>
+    <a
+      href="/tex"
+      class={css({
+        color: "{colors.rose.900}",
+        gap: ".2rem",
+        borderBottom: "1px solid",
+        width: "fit-content",
+        margin: ".3rem auto 0",
+        "&:hover": {
+          color: "{colors.rose.500}",
+        },
+      })}>一覧に戻る</a
+    >
+    <div class={css({ padding: "40px 10px", mb: "2rem" })}>
+      <TexTitleRaw client:load />
+    </div>
+  </main>
+</Layout>
