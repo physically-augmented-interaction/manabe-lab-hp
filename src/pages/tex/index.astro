@@ -1,0 +1,73 @@
+---
+import { css } from "../../../styled-system/css";
+import "../../index.css";
+import Layout from "../../layouts/Layout.astro";
+import PageHead from "../../components/PageHead.astro";
+---
+
+<Layout title="実世界インタラクション研究室" path="/tex">
+  <main class={css({ maxWidth: "1400px", margin: "0 auto", pb: "2rem" })}>
+    <PageHead>Overleaf Utils</PageHead>
+    <p class={css({ padding: "20px 40px", mb: "2rem" })}>
+      <a
+        href="https://www.overleaf.com/"
+        class={css({
+          color: "{colors.rose.900}",
+          gap: ".2rem",
+          borderBottom: "1px solid",
+          width: "fit-content",
+          margin: ".3rem auto 0",
+          "&:hover": {
+            color: "{colors.rose.500}",
+          },
+        })}>Overleaf</a
+      >
+      を使って論文を書く時に便利なツールたち。
+    </p>
+    <div
+      class={css({
+        padding: "20px 40px",
+        mb: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+      })}
+    >
+      <div>
+        <h2
+          class={css({
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            color: "{colors.rose.800}",
+            textDecoration: "underline",
+            "&:hover": {
+              color: "{colors.rose.600}",
+            },
+          })}
+        >
+          <a href="/tex/zip"> 概要書・1ページ化向け - BiB TeX圧縮ツール </a>
+        </h2>
+        <p class={css({ p: "1rem .5rem" })}>
+          概要書に参考文献を載せる際に、なるべくスペースを節約したい時に使うツール。
+        </p>
+      </div>
+      <div>
+        <h2
+          class={css({
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            color: "{colors.rose.800}",
+            textDecoration: "underline",
+            "&:hover": { color: "{colors.rose.600}" },
+          })}
+        >
+          <a href="/tex/title">引用タイトル小文字化防止ツール </a>
+        </h2>
+        <p class={css({ p: "1rem .5rem" })}>
+          BiB
+          TeXで引用する際に、タイトルが大文字なのに単語の先頭以外が小文字になってしまう問題を解決するツール。
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>

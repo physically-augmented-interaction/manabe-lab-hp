@@ -22,12 +22,23 @@ const links = [
 ];
 ---
 
-<body class={css({ margin: 0, fontFamily: "Noto Sans JP" })}>
+<body
+  class={css({
+    margin: 0,
+    fontFamily: "Noto Sans JP",
+    minHeight: "100dvh",
+    display: "flex",
+    flexDirection: "column",
+  })}
+>
   <WideHeader nowPath={path} links={links} />
   <NarrowHeader nowPath={path} links={links} />
-  <slot />
+  <main class={css({ flex: "1 0 auto" })}>
+    <slot />
+  </main>
   <footer
     class={css({
+      mt: "auto",
       textAlign: "center",
       px: 4,
       py: 6,
