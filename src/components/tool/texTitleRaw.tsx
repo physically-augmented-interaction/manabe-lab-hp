@@ -151,6 +151,40 @@ export const TexTitleRaw = () => {
         })}
         placeholder="Paste BibTeX here"
       ></textarea>
+
+      <button
+        className={css({
+          position: "absolute",
+          top: "15px",
+          right: "15px",
+          padding: "6px 12px",
+          borderRadius: "4px",
+          backgroundColor: "#fff",
+          color: "#BE3144",
+          border: "1px solid #BE3144",
+          cursor: "pointer",
+          fontSize: "14px",
+          fontWeight: "bold",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+          transition: "all 0.3s",
+          "&:hover": {
+            backgroundColor: "#BE3144",
+            color: "#fff",
+          },
+          "&:active": {
+            transform: "translateY(1px)",
+            boxShadow: "none",
+          },
+        })}
+        onClick={() => {
+          if (textAreaRef.current) {
+            textAreaRef.current.value = "";
+            handlePaste();
+          }
+        }}
+      >
+        Clear
+      </button>
       <button
         ref={buttonRef}
         className={css({
