@@ -4,27 +4,113 @@ import { useRef, useEffect, useCallback } from "react";
 export const TexZip = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const resultRef = useRef<HTMLPreElement>(null);
+
+  interface BibEntry {
+    type: string;
+    id: string;
+    fields: Record<string, string>;
+  }
+
+  const parseBibTeX = (text: string) => {
+    const entries: BibEntry[] = [];
+    const entryRegex = /@(\w+)\s*{\s*([^,]*),([^@]*)}/g;
+    const fieldRegex = /(\w+)\s*=\s*[{"]([^}"]*)[}"]/g;
+
+    let match;
+    while ((match = entryRegex.exec(text)) !== null) {
+      const [, type, id, fieldsText] = match;
+      const fields: Record<string, string> = {};
+
+      let fieldMatch;
+      while ((fieldMatch = fieldRegex.exec(fieldsText)) !== null) {
+        const [, key, value] = fieldMatch;
+        fields[key.toLowerCase()] = value;
+      }
+
+      entries.push({
+        type: type.toLowerCase(),
+        id,
+        fields,
+      });
+    }
+
+    return entries;
+  };
+
+  const filterFields = (entries: BibEntry[]) => {
+    const desiredFields = [
+      "author",
+      "title",
+      "year",
+      "pages",
+      "numpages",
+      "booktitle",
+      "url",
+      "doi",
+      "series",
+    ];
+
+    return entries.map((entry) => {
+      const filteredFields: Record<string, string> = {};
+      desiredFields.forEach((field) => {
+        if (entry.fields[field]) {
+          filteredFields[field] = entry.fields[field];
+        }
+      });
+      return {
+        ...entry,
+        fields: filteredFields,
+      };
+    });
+  };
+
+  const convertToString = (entries: BibEntry[]) => {
+    return entries
+      .map((entry) => {
+        const regex = /(?<=(title)|(TITLE))\s*=\s*\{([^{}]+)\}/g;
+        const fields = Object.entries(entry.fields)
+          .map(([key, value]) => `  ${key} = {${value}}`)
+          .join(",\n")
+          .replace(regex, (match, p1, p2, p3) => ` = {{${p3}}}`);
+
+        return `@${entry.type}{${entry.id},\n${fields}\n}`;
+      })
+      .join("\n\n");
+  };
 
   const handlePaste = useCallback(() => {
     const textArea = textAreaRef.current;
-    if (textArea) {
-      const clipboardData = textArea.value;
-      console.log(clipboardData);
+    const resultArea = resultRef.current;
+    if (textArea && resultArea) {
+      const bibTexContent = textArea.value;
+      const entries = parseBibTeX(bibTexContent);
+      const filteredEntries = filterFields(entries);
+      const result = convertToString(filteredEntries);
+      resultArea.textContent = result;
     }
   }, []);
 
   useEffect(() => {
-    document.addEventListener("paste", handlePaste);
-    buttonRef.current?.addEventListener("click", () => {
-      handlePaste();
-    });
+    const button = buttonRef.current;
+    const textArea = textAreaRef.current;
+
+    if (button) {
+      button.addEventListener("click", handlePaste);
+    }
+    if (textArea) {
+      textArea.addEventListener("input", handlePaste);
+    }
+
     return () => {
-      document.removeEventListener("paste", handlePaste);
-      buttonRef.current?.removeEventListener("click", () => {
-        handlePaste();
-      });
+      if (button) {
+        button.removeEventListener("click", handlePaste);
+      }
+      if (textArea) {
+        textArea.removeEventListener("input", handlePaste);
+      }
     };
-  }, [handlePaste, buttonRef]);
+  }, [handlePaste]);
 
   return (
     <div>
@@ -38,7 +124,7 @@ export const TexZip = () => {
           borderRadius: "5px",
           border: "1px solid #ddd",
           outline: "none",
-          resize: "none",
+          resize: "vertical",
           "&:focus": {
             border: "1px solid #000",
           },
@@ -68,6 +154,22 @@ export const TexZip = () => {
       >
         圧縮！
       </button>
+      <pre
+        ref={resultRef}
+        className={css({
+          marginTop: "20px",
+          padding: "15px",
+          backgroundColor: "#f5f5f5",
+          borderRadius: "5px",
+          border: "1px solid #ddd",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
+          fontSize: "14px",
+          lineHeight: "1.5",
+          maxHeight: "400px",
+          overflowY: "auto",
+        })}
+      ></pre>
     </div>
   );
 };
