@@ -78,6 +78,11 @@ export const makeShorter = (
       entry.fields.pages = entry.fields.pages.replace(/-+/g, "--");
     }
 
+    // titleは二重括弧にして小文字化を防ぐ
+    if (entry.fields.title) {
+      entry.fields.title = `{${entry.fields.title}}`;
+    }
+
     // booktitleがあってseriesがあった場合は、booktitleをseriesにしてseriesを削除（zipMode時）
     if (options?.zipMode && entry.fields.booktitle && entry.fields.series) {
       entry.fields.booktitle = `Proc. ${entry.fields.series}`;
@@ -90,11 +95,9 @@ export const makeShorter = (
 export const convertToString = (entries: BibEntry[]) => {
   return entries
     .map((entry) => {
-      const regex = /(?<=( title)|( TITLE))\s*=\s*\{([^{}]+)\}/g;
       const fields = Object.entries(entry.fields)
         .map(([key, value]) => `  ${key} = {${value}}`)
-        .join(",\n")
-        .replace(regex, (match, p1, p2, p3) => ` = {{${p3}}}`);
+        .join(",\n");
 
       return `@${entry.type}{${entry.id},\n${fields}\n}`;
     })
