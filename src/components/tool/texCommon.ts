@@ -85,7 +85,9 @@ export const makeShorter = (
         rawTitle.match(/^{+/)?.[0].length ?? 0,
         rawTitle.match(/}+$/)?.[0].length ?? 0,
       );
-      entry.fields.title = `{${rawTitle.slice(bracketCount, -bracketCount)}}`;
+      if (bracketCount !== 0) {
+        entry.fields.title = `{${rawTitle.slice(bracketCount, -bracketCount)}}`;
+      }
     }
 
     // booktitleがあってseriesがあった場合は、booktitleをseriesにしてseriesを削除（zipMode時）
