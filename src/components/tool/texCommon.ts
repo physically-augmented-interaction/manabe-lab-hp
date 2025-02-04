@@ -80,11 +80,25 @@ export const makeShorter = (
 
     // titleは二重括弧にして小文字化を防ぐ
     if (entry.fields.title) {
-      entry.fields.title = `{${entry.fields.title}}`;
+      const rawTitle = entry.fields.title;
+      const bracketCount = Math.min(
+        rawTitle.match(/^{+/)?.[0].length ?? 0,
+        rawTitle.match(/}+$/)?.[0].length ?? 0,
+      );
+      if (bracketCount !== 0) {
+        entry.fields.title = `{${rawTitle.slice(bracketCount, -bracketCount)}}`;
+      } else {
+        entry.fields.title = `{${rawTitle}}`;
+      }
     }
 
     // booktitleがあってseriesがあった場合は、booktitleをseriesにしてseriesを削除（zipMode時）
-    if (options?.zipMode && entry.fields.booktitle && entry.fields.series) {
+    if (
+      options?.zipMode &&
+      entry.fields.booktitle &&
+      entry.fields.series &&
+      entry.type.includes("proc")
+    ) {
       entry.fields.booktitle = `Proc. ${entry.fields.series}`;
       delete entry.fields.series;
     }
