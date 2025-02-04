@@ -87,6 +87,8 @@ export const makeShorter = (
       );
       if (bracketCount !== 0) {
         entry.fields.title = `{${rawTitle.slice(bracketCount, -bracketCount)}}`;
+      } else {
+        entry.fields.title = `{${rawTitle}}`;
       }
     }
 
