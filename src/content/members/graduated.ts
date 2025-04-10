@@ -23,6 +23,106 @@ type GraduatedMembersType = {
 
 export const graduatedMembers: GraduatedMembersType[] = [
   {
+    graduatedYear: 2024,
+    group: [
+      {
+        curriculum: Curriculum.MASTER,
+        members: [
+          {
+            name: "鈴木　智仁",
+            study: "フラックスレスはんだを用いた銀ナノインク・導電転写箔配線に対するはんだ付け部品実装手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "馬場　章",
+            study: "VRHMDを臥位で利用することを想定した視野外情報の立体オーバーレイ提示手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "川崎　竜也",
+            study: "LensTouch: スマートグラスのレンズ面を使用した入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "田中　航生",
+            study: "エクサゲームのための部位に特化した準備運動用エクサゲーム",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "野原　僚人",
+            study: "ウェアラブルキーボードと仮想キーボードを組み合わせたHMDでのマルチモーダルな文字入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "大瀧　翼",
+            study: "爪の先端に対する力とタッチを組み合わせた入力を可能とするネイル装着型デバイス",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "下田　怜央",
+            study: "FreelForce: 任意のタイミングで使用可能なリール型力覚提示デバイス",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "鄭　熠",
+            study: "ジム利用者向けウェイトトレーニングにおける重量と回数の記録システム",
+            careerPath: CareerPath.EMPLOYMENT,
+          }
+        ]
+      },
+      {
+        curriculum: Curriculum.BACHELOR,
+        members: [
+          {
+            name: "風見　翼",
+            study: "ユーザに対象を視認させないためのAR環境向け視線誘導手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "上樂　大治朗",
+            study: "外箱と内容物に合わせた梱包材製作手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "岡崎　廉",
+            study: "加速度センサを用いたヘルメットへのタップ入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "吉岡　直輝",
+            study: "SealingLid: 傾斜壁を倒してふたとして用いる3D印刷手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "屋　雄弥",
+            study: "複数のホイールを用いたメガネ型デバイス向け入力手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "石原　慎一",
+            study: "柔軟なスクリーンを利用した直接触れられるボリュメトリックディスプレイ",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "玉木　将成",
+            study: "測距センサアレイを用いて複数の指位置を推定する手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "深井　悠稀",
+            study: "分割印刷とPPPを用いた3D印刷におけるフィラメント削減手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "檜山　侑大",
+            study: "耳たぶの柔らかさを利用した入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          }
+        ]
+      }
+    ]
+  },
+  {
     graduatedYear: 2023,
     group: [
       {
