@@ -29,18 +29,23 @@ export const graduatedMembers: GraduatedMembersType[] = [
         curriculum: Curriculum.MASTER,
         members: [
           {
-            name: "鈴木　智仁",
-            study: "フラックスレスはんだを用いた銀ナノインク・導電転写箔配線に対するはんだ付け部品実装手法",
-            careerPath: CareerPath.EMPLOYMENT,
-          },
-          {
-            name: "馬場　章",
-            study: "VRHMDを臥位で利用することを想定した視野外情報の立体オーバーレイ提示手法",
+            name: "大瀧　翼",
+            study: "爪の先端に対する力とタッチを組み合わせた入力を可能とするネイル装着型デバイス",
             careerPath: CareerPath.EMPLOYMENT,
           },
           {
             name: "川崎　竜也",
             study: "LensTouch: スマートグラスのレンズ面を使用した入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "下田　玲央",
+            study: "FreelForce: 任意のタイミングで使用可能なリール型力覚提示デバイス",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "鈴木　智仁",
+            study: "フラックスレスはんだを用いた銀ナノインク・導電転写箔配線に対するはんだ付け部品実装手法",
             careerPath: CareerPath.EMPLOYMENT,
           },
           {
@@ -54,13 +59,8 @@ export const graduatedMembers: GraduatedMembersType[] = [
             careerPath: CareerPath.EMPLOYMENT,
           },
           {
-            name: "大瀧　翼",
-            study: "爪の先端に対する力とタッチを組み合わせた入力を可能とするネイル装着型デバイス",
-            careerPath: CareerPath.EMPLOYMENT,
-          },
-          {
-            name: "下田　怜央",
-            study: "FreelForce: 任意のタイミングで使用可能なリール型力覚提示デバイス",
+            name: "馬場　章",
+            study: "VRHMDを臥位で利用することを想定した視野外情報の立体オーバーレイ提示手法",
             careerPath: CareerPath.EMPLOYMENT,
           },
           {

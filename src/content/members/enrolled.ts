@@ -36,17 +36,17 @@ export const enrolledMembers: EnrolledMembersType[] = [
     grade: Grade.M2,
     color: "#dd9933",
     members: [
-      { name: "EIICHIRO SAKURAI", altName: "EIICHIRO SAKURAI" },
-      {
-        name: "KAZUHIRO TAKEDA",
-        altName: "KAZUHIRO TAKEDA",
-        image: "/member/takeda.webp",
-      },
-      { name: "NAOKI KUNIEDA", altName: "NAOKI KUNIEDA" },
       {
         name: "ATSUYA TSUCHIKAWA",
         altName: "ATSUYA TSUCHIKAWA",
         image: "/member/tsuchikawa.webp",
+      },
+      { name: "EIICHIRO SAKURAI", altName: "EIICHIRO SAKURAI" },
+      { name: "NAOKI KUNIEDA", altName: "NAOKI KUNIEDA" },
+      {
+        name: "KAZUHIRO TAKEDA",
+        altName: "KAZUHIRO TAKEDA",
+        image: "/member/takeda.webp",
       },
       {
         name: "SHOGO YAGETA",
@@ -55,7 +55,6 @@ export const enrolledMembers: EnrolledMembersType[] = [
       },
       { name: "YU SHUKYO", altName: "YU SHUKYO" },
       { name: "TOGA ABE", altName: "TOGA ABE", image: "/member/abe.webp" },
-
     ],
   },
   {
@@ -76,47 +75,45 @@ export const enrolledMembers: EnrolledMembersType[] = [
         altName: "YUKI FUKAI",
         image: "/member/fukai.webp",
       },
-      { name: "RYU　SUIGEN", altName: "RYU　SUIGEN" },
+      { name: "RYU SUIGEN", altName: "RYU SUIGEN" },
       { name: "SHIBUTA RENA", altName: "SHIBUTA RENA" }
-
     ],
   },
   {
     grade: Grade.B4,
     color: "#ad0000",
     members: [
-      {
-        name: "YUMA AIUCHI",
-        altName: "YUMA AIUCHI",
-        image: "/member/aiuchi.webp",
-      },
       { name: "佐藤 翼", altName: "佐藤 翼" },
       {
         name: "YOTA MAKINO",
         altName: "YOTA MAKINO",
         image: "/member/makino.webp",
       },
-      { name: "KOUSHIN FUKUDA", altName: "KOUSHIN FUKUDA" },
-      { name: "JIN OKII", altName: "JIN OKII" },
-      { name: "RYOMA OKI", altName: "RYOMA OKI" },
       { name: "長島 匠吾", altName: "長島 匠吾" },
+      { name: "JIN OKII", altName: "JIN OKII" },
+      { name: "HONOKA INADA", altName: "HONOKA INADA" },
+      {
+        name: "YUMA AIUCHI",
+        altName: "YUMA AIUCHI",
+        image: "/member/aiuchi.webp",
+      },
+      { name: "KOUSHIN FUKUDA", altName: "KOUSHIN FUKUDA" },
+      { name: "RYOMA OKI", altName: "RYOMA OKI" },
       { name: "森岡 つおい", altName: "森岡 つおい" },
       { name: "渡邉 智暁", altName: "渡邉 智暁" },
-      { name: "HONOKA INADA", altName: "HONOKA INADA" },
-      { name: "西野　奨真", altName: "西野　奨真" },
-
       {
         name: "CHIHAYA KOBAYASHI",
         altName: "CHIHAYA KOBAYASHI",
         image: "/member/kobayashi.webp",
       },
+      { name: "西野　奨真", altName: "西野　奨真" },
     ],
   },
   {
     grade: Grade.ResearchStudents,
     color: "#737373",
     members: [
-      { name: "DAIVID AIGNER", altName: "DAIVID AIGNER" },
+      { name: "DAVID AIGNER", altName: "DAVID AIGNER" },
     ],
   },
 ];
