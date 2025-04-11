@@ -3,6 +3,7 @@ import type { Member } from "../../types/member";
 enum Grade {
   FacultyMembers = "教員",
   ResearchStudents = "研究生",
+  InternationalStudents = "留学生（Research Exchange Program）",
   D3 = "D3",
   D2 = "D2",
   D1 = "D1",
@@ -110,7 +111,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
     ],
   },
   {
-    grade: Grade.ResearchStudents,
+    grade: Grade.InternationalStudents,
     color: "#737373",
     members: [
       { name: "DAVID AIGNER", altName: "DAVID AIGNER" },
