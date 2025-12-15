@@ -90,7 +90,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
         altName: "YOTA MAKINO",
         image: "/member/makino.webp",
       },
-      { name: "長島 匠吾", altName: "長島 匠吾" },
+      { name: "Shogo Nagashima", altName: "Shogo Nagashima" },
       { name: "JIN OKII", altName: "JIN OKII" },
       { name: "HONOKA INADA", altName: "HONOKA INADA" },
       {
