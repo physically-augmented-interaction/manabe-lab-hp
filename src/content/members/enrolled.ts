@@ -50,8 +50,8 @@ export const enrolledMembers: EnrolledMembersType[] = [
         image: "/member/takeda.webp",
       },
       {
-        name: "SHOGO YAGETA",
-        altName: "SHOGO YAGETA",
+        name: "SHOGO YAGETA!",
+        altName: "SHOGO YAGETA!",
         image: "/member/yageta.webp",
       },
       { name: "YU SHUKYO", altName: "YU SHUKYO" },
