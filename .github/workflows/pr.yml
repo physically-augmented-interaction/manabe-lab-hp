@@ -2,13 +2,13 @@ name: ci-for-pull-request
 on:
   pull_request:
 
-# concurrency:
-#   cancel-in-progress: true
-#   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
