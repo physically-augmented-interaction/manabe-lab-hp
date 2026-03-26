@@ -21,6 +21,33 @@ import { Image } from "astro:assets";
 
 ---
 
+## 段差を設けたオブジェクトを挿入し面一と高速化を実現する3Dプリント手法
+
+### Flushner: A 3D Printing Technique That Inserts Stepped Objects to Achieve Surface Uniformity and High Speed
+
+_櫻井,2024_
+
+熱溶解積層方式（FDM）3Dプリンタは，ラピッドプロトタイピングにおいて一般的なツールの1つとなっている．
+しかし，FDM 3Dプリンタの大きな課題として，製作物の大きさに対して印刷時間が長いことが挙げられる．
+我々は，“Print-Pause-Print”プロトコルを用いて，印刷途中に段差を設けたオブジェクトを挿入することにより，3Dオブジェクトの製作時間を短縮する技術であるFlushnerを提案した．
+Flushnerでは，挿入したオブジェクトと3Dプリントとの間で“面一”を実現し，モデルの簡略化を必要とせずに，表面部分，インフィル，サポートの印刷時間を短縮できる．
+実験の結果，立方体において，Flushnerによる製作時間は辺の長さの1乗に近似できることが分かった．
+
+>Eiichiro Sakurai, Hiroyuki Manabe, “Flushner: A 3D Printing Technique That Inserts Stepped Objects to Achieve Surface Uniformity and High Speed,” In CHI EA ’24, pp. 1-5, 2024.
+>[https://doi.org/10.1145/3613905.3648653](https://doi.org/10.1145/3613905.3648653)
+
+<iframe 
+ src="https://www.youtube.com/embed/8pVSWjfk48Q?si=qyOQaqu4DYQdP8Lu"
+ title="YouTube video player" 
+ frameborder="0" 
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+ referrerpolicy="strict-origin-when-cross-origin" 
+ allowfullscreen="" 
+ style="width: 90%; margin: 0 auto; aspect-ratio: 16/9;">
+</iframe>
+
+---
+
 ## FDM方式3Dプリンタを用いた全自動フィラメント削減手法
 
 ### SealingLid: FDM 3D Printing Technique that Bends Thin Walls to Work as a Lid
