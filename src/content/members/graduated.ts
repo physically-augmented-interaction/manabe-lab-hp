@@ -23,6 +23,96 @@ type GraduatedMembersType = {
 
 export const graduatedMembers: GraduatedMembersType[] = [
   {
+    graduatedYear: 2025,
+    group: [
+      {
+        curriculum: Curriculum.MASTER,
+        members: [
+          {
+            name: "櫻井　瑛一朗",
+            study: "Flushner 適用のための統合編集ツールによる総所要時間短縮と作業負荷軽減",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "八下田　尚吾",
+            study: "利き腕以外の身体部位に装着した IMU センサに基づくバドミントンショット分類",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "國枝　直希",
+            study: "HMD と手首装着型 IMU を用いた全身を入力領域とするタップ入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "武田　和大",
+            study: "AR グラスのハンドトラッキング機能を用いたスマートフォンの位置と角度に基づく画面拡張手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "虞　朱強",
+            study: "FDMプリンタで造形した基板上への導電転写箔を用いた電子回路印刷条件の検討",
+            careerPath: CareerPath.EMPLOYMENT,
+          }
+        ]
+      },
+      {
+        curriculum: Curriculum.BACHELOR,
+        members: [
+          {
+            name: "渡邉　智暁",
+            study: "スマートフォンとスマートウォッチを併用した振動通知への気づき時間に関する研究",
+            careerPath: CareerPath.EMPLOYMENT,
+          },
+          {
+            name: "相内　優真",
+            study: "ゲーム配信時に投稿された配信者に対するネタバレチャットの検出",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "佐藤　翼",
+            study: "AR/VR環境における3Dオブジェクトの素早い断面選択を実現する操作手法",
+            careerPath: CareerPath.OTHER_UNIVERSITY,
+          },
+          {
+            name: "牧野　陽太",
+            study: "入力手法が検図におけるフィードバックに与える影響",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "福田　嵩真",
+            study: "VRを用いた仰向け姿勢作業環境のための入力インタフェースの検討",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "沖井　仁",
+            study: "擦り動作を用いた手首内側トラックボールによる入力手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "沖　遼馬",
+            study: "ホットスタンプ法による電子配線印刷における高密度化のための熱剥離加工",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "長島　匠吾",
+            study: "シミュレーションを用いた耳たぶジェスチャ入力における磁気センサ配置の検討",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "森岡　つおい",
+            study: "SolDy: FDM方式3Dプリンタによるはんだ押出を用いたインタラクティブな3Dオブジェクト作成手法",
+            careerPath: CareerPath.GRADUATE,
+          },
+          {
+            name: "稲田　帆乃佳",
+            study: "ダンス動作習得を支援する視点変更映像の作成",
+            careerPath: CareerPath.GRADUATE,
+          }
+        ]
+      }
+    ]
+  },
+  {
     graduatedYear: 2024,
     group: [
       {

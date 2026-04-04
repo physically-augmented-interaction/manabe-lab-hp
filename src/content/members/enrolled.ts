@@ -42,26 +42,6 @@ export const enrolledMembers: EnrolledMembersType[] = [
         altName: "ATSUYA TSUCHIKAWA",
         image: "/member/tsuchikawa.webp",
       },
-      { name: "EIICHIRO SAKURAI", altName: "EIICHIRO SAKURAI" },
-      { name: "NAOKI KUNIEDA", altName: "NAOKI KUNIEDA" },
-      {
-        name: "KAZUHIRO TAKEDA",
-        altName: "KAZUHIRO TAKEDA",
-        image: "/member/takeda.webp",
-      },
-      {
-        name: "SHOGO YAGETA",
-        altName: "SHOGO YAGETA",
-        image: "/member/yageta.webp",
-      },
-      { name: "YU SHUKYO", altName: "YU SHUKYO" },
-      { name: "TOGA ABE", altName: "TOGA ABE", image: "/member/abe.webp" },
-    ],
-  },
-  {
-    grade: Grade.M1,
-    color: "#16a34a",
-    members: [
       { name: "DAIJIRO JORAKU", altName: "DAIJIRO JORAKU" },
       { name: "NAOKI YOSHIOKA", altName: "NAOKI YOSHIOKA" },
       { name: "YUYA OKU", altName: "YUYA OKU" },
@@ -77,14 +57,14 @@ export const enrolledMembers: EnrolledMembersType[] = [
         image: "/member/fukai.webp",
       },
       { name: "RYU SUIGEN", altName: "RYU SUIGEN" },
-      { name: "SHIBUTA RENA", altName: "SHIBUTA RENA" }
+      { name: "SHIBUTA RENA", altName: "SHIBUTA RENA" },
+      { name: "TOGA ABE", altName: "TOGA ABE", image: "/member/abe.webp" },
     ],
   },
   {
-    grade: Grade.B4,
-    color: "#ad0000",
+    grade: Grade.M1,
+    color: "#16a34a",
     members: [
-      { name: "佐藤 翼", altName: "佐藤 翼" },
       {
         name: "YOTA MAKINO",
         altName: "YOTA MAKINO",
@@ -101,7 +81,29 @@ export const enrolledMembers: EnrolledMembersType[] = [
       { name: "KOUSHIN FUKUDA", altName: "KOUSHIN FUKUDA" },
       { name: "RYOMA OKI", altName: "RYOMA OKI" },
       { name: "森岡 つおい", altName: "森岡 つおい" },
-      { name: "渡邉 智暁", altName: "渡邉 智暁" },
+    ],
+  },
+  {
+    grade: Grade.B4,
+    color: "#ad0000",
+    members: [
+      { name: "二村　睦美", altName: "二村　睦美" },
+      { name: "笠置　啓太", altName: "笠置　啓太" },
+      { name: "ENA USUI", altName: "ENA USUI" },
+      { name: "石山　諒大", altName: "石山　諒大" },
+      { name: "NOZOMI SHIRASAKI", altName: "NOZOMI SHIRASAKI" },
+      {
+        name: "RYUSEI YAMAOKA",
+        altName: "RYUSEI YAMAOKA",
+        image: "/member/yamaoka.webp",
+      },
+      { name: "FUUKI ARAI", altName: "FUUKI ARAI" },
+      { name: "柳岡　優作", altName: "柳岡　優作" },
+      {
+        name: "武田　和大",
+        altName: "武田　和大",
+        image: "/member/takeda.webp",
+      },
       {
         name: "CHIHAYA KOBAYASHI",
         altName: "CHIHAYA KOBAYASHI",
@@ -111,10 +113,10 @@ export const enrolledMembers: EnrolledMembersType[] = [
     ],
   },
   {
-    grade: Grade.InternationalStudents,
+    grade: Grade.ResearchStudents,
     color: "#737373",
     members: [
-      { name: "DAVID AIGNER", altName: "DAVID AIGNER" },
+      { name: "趙 温韜", altName: "趙 温韜" },
     ],
   },
 ];
