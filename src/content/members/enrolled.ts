@@ -57,7 +57,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
         image: "/member/fukai.webp",
       },
       { name: "RYU SUIGEN", altName: "RYU SUIGEN" },
-      { name: "SHIBUTA RENA", altName: "SHIBUTA RENA" },
+      { name: "RENA SHIBUTA", altName: "RENA SHIBUTA" },
     ],
   },
   {
