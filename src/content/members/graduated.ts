@@ -52,7 +52,11 @@ export const graduatedMembers: GraduatedMembersType[] = [
             name: "虞　朱強",
             study: "FDMプリンタで造形した基板上への導電転写箔を用いた電子回路印刷条件の検討",
             careerPath: CareerPath.EMPLOYMENT,
-          }
+          },
+          {
+            name: "阿部　冬雅",
+            careerPath: CareerPath.WITHDRAWAL,
+          },
         ]
       },
       {

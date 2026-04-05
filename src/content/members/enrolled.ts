@@ -58,7 +58,6 @@ export const enrolledMembers: EnrolledMembersType[] = [
       },
       { name: "RYU SUIGEN", altName: "RYU SUIGEN" },
       { name: "SHIBUTA RENA", altName: "SHIBUTA RENA" },
-      { name: "TOGA ABE", altName: "TOGA ABE", image: "/member/abe.webp" },
     ],
   },
   {
