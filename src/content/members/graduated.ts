@@ -23,6 +23,21 @@ type GraduatedMembersType = {
 
 export const graduatedMembers: GraduatedMembersType[] = [
   {
+    graduatedYear: 2026,
+    group: [
+      {
+        curriculum: Curriculum.MASTER,
+        members: [
+          {
+            name: "土川　敦也",
+            study: "LooQuestion: LLM 生成候補の選択によりヘッドポインティングのみで質問できる AR グラス向け入力手法",
+            careerPath: CareerPath.EMPLOYMENT,
+          }
+        ]
+      }
+    ]
+  },
+  {
     graduatedYear: 2025,
     group: [
       {
