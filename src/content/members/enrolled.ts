@@ -108,6 +108,21 @@ export const enrolledMembers: EnrolledMembersType[] = [
     ],
   },
   {
+    grade: Grade.B3,
+    color: "#0000cd",
+    members: [
+      { name: "卜部　颯斗", altName: "卜部　颯斗" },
+      { name: "小川　雄司", altName: "小川　雄司" },
+      { name: "山口　真史", altName: "山口　真史" },
+      { name: "目黒　敬久", altName: "目黒　敬久" },
+      { name: "戸塚　整", altName: "戸塚　整" },
+      { name: "董　瀾", altName: "董　瀾" },
+      { name: "細谷　萌栞", altName: "細谷　萌栞" },
+      { name: "栗本　鴻志", altName: "栗本　鴻志" },
+      { name: "土橋　颯", altName: "土橋　颯" },
+    ],
+  },
+  {
     grade: Grade.ResearchStudents,
     color: "#737373",
     members: [
