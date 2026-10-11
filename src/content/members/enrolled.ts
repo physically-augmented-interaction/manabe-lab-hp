@@ -37,11 +37,6 @@ export const enrolledMembers: EnrolledMembersType[] = [
     grade: Grade.M2,
     color: "#dd9933",
     members: [
-      {
-        name: "ATSUYA TSUCHIKAWA",
-        altName: "ATSUYA TSUCHIKAWA",
-        image: "/member/tsuchikawa.webp",
-      },
       { name: "DAIJIRO JORAKU", altName: "DAIJIRO JORAKU" },
       { name: "NAOKI YOSHIOKA", altName: "NAOKI YOSHIOKA" },
       { name: "YUYA OKU", altName: "YUYA OKU" },
@@ -80,6 +75,7 @@ export const enrolledMembers: EnrolledMembersType[] = [
       { name: "KOUSHIN FUKUDA", altName: "KOUSHIN FUKUDA" },
       { name: "RYOMA OKI", altName: "RYOMA OKI" },
       { name: "森岡 つおい", altName: "森岡 つおい" },
+      { name: "MARKO MATEUSZ ADAM", altName: "MARKO MATEUSZ ADAM" },
     ],
   },
   {
